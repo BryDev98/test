@@ -314,18 +314,12 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
                 return
             if '/getdb' in msgText:
-                contrasena = os.environ.get('password')
-                if username == os.environ.get('administrador') :
+                isadmin = jdb.is_admin(username)
+                if isadmin:
                     bot.sendMessage(update.message.chat.id,'🔷BASE DE DATOS🔷\n🔹NO COMPARTIR🔹')
                     bot.sendFile(update.message.chat.id,'database.jdb')
-                try :
-                    password_contrasena = int(str(msgText).split(' ')[1])
-                    if password_contrasena == contrasena : 
-                        bot.sendMessage(update.message.chat.id,'🔷BASE DE DATOS🔷\n🔹NO COMPARTIR🔹')
-                        bot.sendFile(update.message.chat.id,'database.jdb')
-                    if password_contrasena != contrasena : bot.sendMessage(update.message.chat.id,'✖️CONTRASEÑA INCORRECTA✖️\n\nPidele la Contraseña a @'+username
-                except :
-                    bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
+                else:
+                    bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
                 return
             # end
 
