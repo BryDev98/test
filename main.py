@@ -21,8 +21,8 @@ from ProxyCloud import ProxyCloud
 import ProxyCloud
 import socket
 import S5Crypto
-developer = 'AresDz'
-administradores = ['AresDza','TuguerX','rockstar984']
+developer = 'AresDza'
+administradores = ['TuguerX','rockstar984']
 
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
@@ -136,6 +136,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
         bot.editMessageText(message,'✖️Error✖️\n' + str(ex))
         return None
 
+passw = 'cKkHeGjG4GdDnJ'
 
 def processFile(update,bot,message,file,thread=None,jdb=None):
     file_size = get_file_size(file)
@@ -236,7 +237,7 @@ def sendTxt(name,files,update,bot):
 
 def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
-    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or developer == password :
+    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or passw == password :
         try :
             thread = bot.this_thread
             username = update.message.sender.username
@@ -313,12 +314,18 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
                 return
             if '/getdb' in msgText:
-                isadmin = jdb.is_admin(username)
-                if isadmin:
+                contrasena = os.environ.get('password')
+                if username == os.environ.get('administrador') :
                     bot.sendMessage(update.message.chat.id,'🔷BASE DE DATOS🔷\n🔹NO COMPARTIR🔹')
                     bot.sendFile(update.message.chat.id,'database.jdb')
-                else:
-                    bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
+                try :
+                    password_contrasena = int(str(msgText).split(' ')[1])
+                    if password_contrasena == contrasena : 
+                        bot.sendMessage(update.message.chat.id,'🔷BASE DE DATOS🔷\n🔹NO COMPARTIR🔹')
+                        bot.sendFile(update.message.chat.id,'database.jdb')
+                    if password_contrasena != contrasena : bot.sendMessage(update.message.chat.id,'✖️CONTRASEÑA INCORRECTA✖️\n\nPidele la Contraseña a @'+username
+                except :
+                    bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
                 return
             # end
 
