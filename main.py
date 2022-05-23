@@ -516,16 +516,24 @@ def onmessage(update,bot:ObigramClient):
                 try:
                     getUser = user_info
                     if getUser:
-                        getUser['proxy'] = ''
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        succes_msg = '🛰 PROXY ELIMINADO CON ÉXITO ....'
-                        bot.sendMessage(update.message.chat.id,succes_msg)
+                        proxy = getUser['proxy']
+                        if proxy != '' : 
+                            getUser['proxy'] = ''
+                            jdb.save_data_user(username,getUser)
+                            jdb.save()
+                            succes_msg = '🛰 PROXY ELIMINADO CON ÉXITO ....'
+                            bot.sendMessage(update.message.chat.id,succes_msg)
+                        else : bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
                 except:
                     if user_info:
-                        user_info['proxy'] = ''
-                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                        bot.sendMessage(update.message.chat.id,statInfo)
+                        proxy = getUser['proxy']
+                        if proxy != '' : 
+                            getUser['proxy'] = ''
+                            jdb.save_data_user(username,getUser)
+                            jdb.save()
+                            succes_msg = '🛰 PROXY ELIMINADO CON ÉXITO ....'
+                            bot.sendMessage(update.message.chat.id,succes_msg)
+                        else : bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
                 return
             if '/dir' in msgText:
                 try:
