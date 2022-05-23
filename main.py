@@ -235,7 +235,7 @@ def sendTxt(name,files,update,bot):
 
 def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
-    if developer == os.environ.get('tl_admin_user') or developer == password :
+    if developer == os.environ.get('administrador') or developer == password :
         try :
             thread = bot.this_thread
             username = update.message.sender.username
