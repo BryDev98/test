@@ -294,7 +294,7 @@ def onmessage(update,bot:ObigramClient):
                 else:
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
                 return
-            if '/ban_user' in msgText:
+            if '/kick_user' in msgText:
                 isadmin = jdb.is_admin(username)
                 if isadmin:
                     try:
@@ -307,7 +307,7 @@ def onmessage(update,bot:ObigramClient):
                         msg = '🚪 @'+user+' ha sido Expulsado 👋🏻'
                         bot.sendMessage(update.message.chat.id,msg)
                     except:
-                        bot.sendMessage(update.message.chat.id,'✖️Error en el comando /ban_user username✖️')
+                        bot.sendMessage(update.message.chat.id,'✖️Error en el comando /kick_user username✖️')
                 else:
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
                 return
@@ -390,47 +390,49 @@ def onmessage(update,bot:ObigramClient):
                 except:
                     bot.sendMessage(update.message.chat.id,'✖️Error en el comando /repo id✖️')
                 return
-            if '/tokenize_on' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['tokenize'] = 1
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                        tokenize_on_msg = 'TOKENIZE ACTIVADO ✅\nUsa /tokenize_stat para ver el Estado 👀'
-                        bot.sendMessage(update.message.chat.id,tokenize_on_msg)
-                except:
-                    bot.sendMessage(update.message.chat.id,'✖️Error en el comando /tokenize state✖️')
-                return
-            if '/tokenize_off' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['tokenize'] = 0
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                        tokenize_off_msg = 'TOKENIZE DESACTIVADO ☑️\nUsa /tokenize_stat para ver el Estado 👀'
-                        bot.sendMessage(update.message.chat.id,tokenize_off_msg)
-                except:
-                    bot.sendMessage(update.message.chat.id,'✖️Error en el comando /tokenize state✖️')
-                return
-            if '/tokenize_stat' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        tokenize = getUser['tokenize']
-                        if tokenize != 0 : bot.sendMessage(update.message.chat.id,'✅ Tokenize Activado .\nUsa /tokenize_off para Desactivarlo')
-                        elif tokenize == 0 : bot.sendMessage(update.message.chat.id,'☑️ Tokenize Desactivado .\nUsa /tokenize_on para Activarlo')
-                        else : bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
-                except:
-                    if user_info:
-                        tokenize = user_info['tokenize']
-                        if tokenize != 0 : bot.sendMessage(update.message.chat.id,'✅ Tokenize Activado .\nUsa /tokenize_off para Desactivarlo')
-                        elif tokenize == 0 : bot.sendMessage(update.message.chat.id,'☑️ Tokenize Desactivado .\nUsa /tokenize_on para Activarlo')
-                        else : bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
-                return
+            if 'tokenize' in msgText:
+                if '/tokenize_on' in msgText:
+                    try:
+                        getUser = user_info
+                        if getUser:
+                            getUser['tokenize'] = 1
+                            jdb.save_data_user(username,getUser)
+                            jdb.save()
+                            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                            tokenize_on_msg = 'TOKENIZE ACTIVADO ✅\nUsa /tokenize_stat para ver el Estado 👀'
+                            bot.sendMessage(update.message.chat.id,tokenize_on_msg)
+                    except:
+                        bot.sendMessage(update.message.chat.id,'✖️Error en el comando /tokenize state✖️')
+                    return
+                if '/tokenize_off' in msgText:
+                    try:
+                        getUser = user_info
+                        if getUser:
+                            getUser['tokenize'] = 0
+                            jdb.save_data_user(username,getUser)
+                            jdb.save()
+                            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                            tokenize_off_msg = 'TOKENIZE DESACTIVADO ☑️\nUsa /tokenize_stat para ver el Estado 👀'
+                            bot.sendMessage(update.message.chat.id,tokenize_off_msg)
+                    except:
+                        bot.sendMessage(update.message.chat.id,'✖️Error en el comando /tokenize state✖️')
+                    return
+                if '/tokenize_stat' in msgText:
+                    try:
+                        getUser = user_info
+                        if getUser:
+                            tokenize = getUser['tokenize']
+                            if tokenize != 0 : bot.sendMessage(update.message.chat.id,'✅ Tokenize Activado .\nUsa /tokenize_off para Desactivarlo')
+                            elif tokenize == 0 : bot.sendMessage(update.message.chat.id,'☑️ Tokenize Desactivado .\nUsa /tokenize_on para Activarlo')
+                            else : bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
+                    except:
+                        if user_info:
+                            tokenize = user_info['tokenize']
+                            if tokenize != 0 : bot.sendMessage(update.message.chat.id,'✅ Tokenize Activado .\nUsa /tokenize_off para Desactivarlo')
+                            elif tokenize == 0 : bot.sendMessage(update.message.chat.id,'☑️ Tokenize Desactivado .\nUsa /tokenize_on para Activarlo')
+                            else : bot.sendMessage(update.message.chat.id,'✖️ERROR✖️')
+                    return
+                else : bot.sendMessage(update.message.chat.id,'✖️Error en el comando /tokenize_(on/off/stat)✖️\n on - Activar Tokenize a los Enlaces\n off - Desactivar Tokenize a los Enlaces\n👀 stat - Ver Estado')
             if '/cloud' in msgText:
                 try:
                     cmd = str(msgText).split(' ',2)
@@ -474,15 +476,13 @@ def onmessage(update,bot:ObigramClient):
                     
                     if getUser:
                         proxy = getUser['proxy']
-                        bot.sendMessage(update.message.chat.id,proxy)
-                    else :
-                        bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
+                        if proxy != '' : bot.sendMessage(update.message.chat.id,proxy)
+                        else : bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
                 except:
                     if user_info:
                         proxy = user_info['proxy']
-                        bot.sendMessage(update.message.chat.id,proxy)
-                    else :
-                        bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
+                        if proxy != '' : bot.sendMessage(update.message.chat.id,proxy)
+                        else : bot.sendMessage(update.message.chat.id,'🚯 NO TIENES PROXY ...')
                 return
             if '/encriptar_proxy' in msgText:
                 proxy_sms = str(msgText).split(' ')[1]
