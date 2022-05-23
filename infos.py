@@ -134,7 +134,7 @@ def createStat(username,userdata,isadmin):
     msgAdmin = '☑️'
     if isadmin:
         msgAdmin = '✅'
-    msg+= '⚜️Admin : : ' + msgAdmin + '\n'
+    msg+= '⚜️Admin : ' + msgAdmin + '\n'
     proxy = '☑️'
     if userdata['proxy'] !='':
        proxy = '✅'
