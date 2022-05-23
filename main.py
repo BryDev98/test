@@ -21,7 +21,8 @@ from ProxyCloud import ProxyCloud
 import ProxyCloud
 import socket
 import S5Crypto
-developer = 'AresDza'
+developer = 'AresDz'
+administradores = ['AresDza','TuguerX','rockstar984']
 
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
@@ -235,7 +236,7 @@ def sendTxt(name,files,update,bot):
 
 def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
-    if developer == os.environ.get('administrador') or developer == password :
+    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or developer == password :
         try :
             thread = bot.this_thread
             username = update.message.sender.username
