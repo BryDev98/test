@@ -136,7 +136,6 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
         bot.editMessageText(message,'✖️Error✖️\n' + str(ex))
         return None
 
-passw = 'AresDzaDeveloper*'
 
 def processFile(update,bot,message,file,thread=None,jdb=None):
     file_size = get_file_size(file)
@@ -237,7 +236,7 @@ def sendTxt(name,files,update,bot):
 
 def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
-    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or passw == password :
+    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or developer == password :
         try :
             thread = bot.this_thread
             username = update.message.sender.username
