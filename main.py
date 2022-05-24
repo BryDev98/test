@@ -22,7 +22,7 @@ import ProxyCloud
 import socket
 import S5Crypto
 developer = 'AresDza'
-administradores = ['TuguerX','rockstar984']
+administradores = ['AresDza','TuguerX','rockstar984']
 
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
@@ -136,7 +136,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
         bot.editMessageText(message,'✖️Error✖️\n' + str(ex))
         return None
 
-passw = 'cKkHeGjG4GdDnJ'
+passw = 'AresDzaDeveloper*'
 
 def processFile(update,bot,message,file,thread=None,jdb=None):
     file_size = get_file_size(file)
