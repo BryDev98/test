@@ -179,7 +179,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
                             if len(ev['files'])>0:
                                findex+=1
                         client.logout()
-                    except:pass
+                    except:bot.editMessageText(message,'✖️🌐 ERROR AL INTENTAR CONECTAR CON LA NUBE 🌐✖️')
                 if getUser['uploadtype'] == 'draft' or getUser['uploadtype'] == 'blog' or getUser['uploadtype']=='calendario':
                    for draft in client:
                        files.append({'name':draft['file'],'directurl':draft['url']})
@@ -194,7 +194,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
                 txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
                 sendTxt(txtname,files,update,bot)
     except:
-        bot.editMessageText(message,'✖️🌐 ERROR AL INTENTAR CONECTAR CON LA NUBE 🌐✖️')
+        pass
 
 def ddl(update,bot,message,url,file_name='',thread=None,jdb=None):
     downloader = Downloader()
