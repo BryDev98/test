@@ -162,37 +162,38 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         client = processUploadFiles(file,file_size,[file],update,bot,message,jdb=jdb)
         file_upload_count = 1
     bot.editMessageText(message,'⚙️ Preparando Archivo .... 🗄')
-    evidname = ''
-    files = []
-    if client:
-        if getUser['cloudtype'] == 'moodle':
-            if getUser['uploadtype'] == 'evidence':
-                try:
-                    evidname = str(file).split('.')[0]
-                    txtname = evidname + '.txt'
-                    evidences = client.getEvidences()
-                    for ev in evidences:
-                        if ev['name'] == evidname:
-                           files = ev['files']
-                           break
-                        if len(ev['files'])>0:
-                           findex+=1
-                    client.logout()
-                except:pass
-            if getUser['uploadtype'] == 'draft' or getUser['uploadtype'] == 'blog' or getUser['uploadtype']=='calendario':
-               for draft in client:
-                   files.append({'name':draft['file'],'directurl':draft['url']})
-        else:
-            for data in client:
-                files.append({'name':data['name'],'directurl':data['url']})
-        bot.deleteMessage(message.chat.id,message.message_id)
-        finishInfo = infos.createFinishUploading(file,file_size,max_file_size,file_upload_count,file_upload_count,findex)
-        filesInfo = infos.createFileMsg(file,files)
-        bot.sendMessage(message.chat.id,finishInfo+'\n'+filesInfo,parse_mode='html')
-        if len(files)>0:
-            txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
-            sendTxt(txtname,files,update,bot)
-    else:
+    try:
+        evidname = ''
+        files = []
+        if client:
+            if getUser['cloudtype'] == 'moodle':
+                if getUser['uploadtype'] == 'evidence':
+                    try:
+                        evidname = str(file).split('.')[0]
+                        txtname = evidname + '.txt'
+                        evidences = client.getEvidences()
+                        for ev in evidences:
+                            if ev['name'] == evidname:
+                               files = ev['files']
+                               break
+                            if len(ev['files'])>0:
+                               findex+=1
+                        client.logout()
+                    except:pass
+                if getUser['uploadtype'] == 'draft' or getUser['uploadtype'] == 'blog' or getUser['uploadtype']=='calendario':
+                   for draft in client:
+                       files.append({'name':draft['file'],'directurl':draft['url']})
+            else:
+                for data in client:
+                    files.append({'name':data['name'],'directurl':data['url']})
+            bot.deleteMessage(message.chat.id,message.message_id)
+            finishInfo = infos.createFinishUploading(file,file_size,max_file_size,file_upload_count,file_upload_count,findex)
+            filesInfo = infos.createFileMsg(file,files)
+            bot.sendMessage(message.chat.id,finishInfo+'\n'+filesInfo,parse_mode='html')
+            if len(files)>0:
+                txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
+                sendTxt(txtname,files,update,bot)
+    except:
         bot.editMessageText(message,'✖️🌐 ERROR AL INTENTAR CONECTAR CON LA NUBE 🌐✖️')
 
 def ddl(update,bot,message,url,file_name='',thread=None,jdb=None):
