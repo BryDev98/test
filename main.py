@@ -193,6 +193,10 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
             if len(files)>0:
                 txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
                 sendTxt(txtname,files,update,bot)
+        else:
+            try:
+                bot.editMessageText(message,'✖️🌐 ERROR AL INTENTAR CONECTAR CON LA NUBE 🌐✖️')
+            except:pass
     except:
         pass
 
