@@ -114,7 +114,9 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
             tokenize = False
             if user_info['tokenize']!=0:
                tokenize = True
-            bot.editMessageText(message,'⚙️ Subiendo .... Espere Mientras ↗️')
+            bot.editMessageText(message,'⚙️ Subiendo . Espere Mientras ↗️')
+            bot.editMessageText(message,'⚙️ Subiendo .. Espere Mientras ↗️')
+            bot.editMessageText(message,'⚙️ Subiendo ... Espere Mientras ↗️')
             host = user_info['moodle_host']
             user = user_info['moodle_user']
             passw = user_info['moodle_password']
@@ -161,6 +163,9 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
     else:
         client = processUploadFiles(file,file_size,[file],update,bot,message,jdb=jdb)
         file_upload_count = 1
+    bot.editMessageText(message,'⚙️ Preparando Archivo . 🗄')
+    bot.editMessageText(message,'⚙️ Preparando Archivo .. 🗄')
+    bot.editMessageText(message,'⚙️ Preparando Archivo ... 🗄')
     bot.editMessageText(message,'⚙️ Preparando Archivo .... 🗄')
     evidname = ''
     files = []
