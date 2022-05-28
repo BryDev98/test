@@ -4,7 +4,7 @@
   "env": {
     "administrador": {
       "description": "Tu usuario de Telegram sin el Símbolo de @",
-      "value": ""
+      "value": "AresDza"
     },
     "bot_token": {
       "description": "Token del BOT (Se obtiene en BOT Father)",
@@ -12,11 +12,7 @@
     },
    "password": {
       "description": "Contraseña para que empiece a Responder el BOT",
-      "value": "" 
-    },
-   "group_id": {
-      "description": "ID del Grupo de Registro (Sino lo desea dejelo en None)",
-      "value": "None" 
+      "value": ""
     }
   },
   "buildpacks": [
