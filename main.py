@@ -23,7 +23,8 @@ import socket
 import S5Crypto
 developer = 'AresDza'
 administradores = ['AresDza','TuguerX','rockstar984']
-
+user_list = []
+admin_list = []
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
     try:
@@ -270,6 +271,7 @@ def onmessage(update,bot:ObigramClient):
                 if user_info is None:
                     if username == tl_admin_user:
                         jdb.create_admin(username)
+                        admin_list.append(username)
                     else:
                         jdb.create_user(username)
                     user_info = jdb.get_user(username)
@@ -291,6 +293,7 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👤 @'+user+' ahora Tiene Acceso al BOT como [USUARIO]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        user_list.append(user)
                         try:
                             if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👤 [USUARIO] @'+user)
                             else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👤 [USUARIO] @'+user)
@@ -309,6 +312,7 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👑 @'+user+' ahora Tiene Acceso al BOT como [ADMIN]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        admin_list.append(user)
                         try:
                             if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👑 [ADMINISTRADOR] @'+user)
                             else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👑 [ADMINISTRADOR] @'+user)
@@ -330,6 +334,8 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '🚪 @'+user+' ha sido Expulsado 👋🏻'
                         bot.sendMessage(update.message.chat.id,msg)
+                        nmb_list = int(user_list.index(user))
+                        user_list.pop(nmb_list)
                         try:
                             if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user)
                             else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user)
@@ -354,6 +360,16 @@ def onmessage(update,bot:ObigramClient):
             # end
 
             # comandos de usuario
+            if '/users' in msgText:
+                msg_user=''
+                msg_admin=''
+                for user in user_list:
+                    msg_user+='👤 @'+user+'\n'
+                for admin in admin_list:
+                    msg_admin+='👑 @'+admin+'\n'
+                msg='⚡️🤖RTFree-Alquiler🤖⚡️\n👤 USUARIOS - 👑 ADMINISTRADORES\n\n👤 [USUARIOS] :\n'+msg_user+'\n\n👑 [ADMINISTRADORES] :\n'+msg_admin
+                bot.sendMessage(update.message.chat.id,msg)
+            return
             if '/tutorial' in msgText:
                 tuto = open('tuto.txt','r')
                 bot.sendMessage(update.message.chat.id,tuto.read())
