@@ -1,18 +1,18 @@
 {
-  "name": "Bot para Subir a las Moodle V7.2 Modded",
-  "description": "By t.me/AresDza",
+  "name": "RTFreeV7.3",
+  "description": "Code por : AresDza",
   "env": {
     "administrador": {
       "description": "Tu usuario de Telegram sin el Símbolo de @",
-      "value": "AresDza"
+      "value": ""
     },
-   "password": {
-      "description": "Contraseña para que empiece a Responder el BOT",
-      "value": "PASSWORD"
-    },
-    "bot_token": {
+   "bot_token": {
       "description": "Token del BOT (Se obtiene en BOT Father)",
       "value": ""
+    },
+    "password": {
+      "description": "Contraseña para que empiece a Responder el BOT",
+      "value": "PASSWORD"
     },
     "group_id": {
       "description": "ID del Grupo de Registro (Déjelo en None sino lo desea)",
