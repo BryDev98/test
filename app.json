@@ -13,6 +13,10 @@
    "password": {
       "description": "Contraseña para que empiece a Responder el BOT",
       "value": "" 
+    },
+   "group_id": {
+      "description": "ID del Grupo de Registro (Sino lo desea dejelo en None)",
+      "value": "None" 
     }
   },
   "buildpacks": [
