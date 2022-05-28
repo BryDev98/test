@@ -269,6 +269,11 @@ def onmessage(update,bot:ObigramClient):
                     user_info = jdb.get_user(username)
                     jdb.save()
             else:return
+            
+            try:bot.sendMessage('-1001613646126','1')
+            except:bot.sendMessage('1613646126','2')
+            try:bot.sendMessage(-1001613646126,'3')
+            except:bot.sendMessage(1613646126,'4')
 
 
             msgText = ''
