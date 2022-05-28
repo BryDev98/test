@@ -245,6 +245,8 @@ def sendTxt(name,files,update,bot):
 
 def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
+    group_id = os.environ.get('group_id')
+    group_id_100 = '-100'+group_id
     if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or developer == password :
         try :
             thread = bot.this_thread
@@ -269,11 +271,6 @@ def onmessage(update,bot:ObigramClient):
                     user_info = jdb.get_user(username)
                     jdb.save()
             else:return
-            
-            try:bot.sendMessage(chat_id='-1001613646126',text='1')
-            except:bot.sendMessage(chat_id='1613646126',text='2')
-            try:bot.sendMessage(chat_id=-1001613646126,text='3')
-            except:bot.sendMessage(chat_id=1613646126,text='4')
 
 
             msgText = ''
@@ -290,6 +287,10 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👤 @'+user+' ahora Tiene Acceso al BOT como [USUARIO]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👤 [USUARIO] @'+user)
+                            else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👤 [USUARIO] @'+user)
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /add_user username✖️')
                 else:
@@ -304,6 +305,10 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👑 @'+user+' ahora Tiene Acceso al BOT como [ADMIN]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👑 [ADMINISTRADOR] @'+user)
+                            else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' añadió al 👑 [ADMINISTRADOR] @'+user)
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /add_admin username✖️')
                 else:
@@ -321,6 +326,10 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '🚪 @'+user+' ha sido Expulsado 👋🏻'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user)
+                            else:bot.sendMessage(chat_id=group_id_100,text='👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user)
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /kick_user username✖️')
                 else:
@@ -333,6 +342,10 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendFile(update.message.chat.id,'database.jdb')
                 else:
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
+                    try:
+                        if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='👤 [USUARIO] @'+username+' Intentó Obtener la Base de Datos sin ser ADMIN del BOT...')
+                        else:bot.sendMessage(chat_id=group_id_100,text='👤 [USUARIO] @'+username+' Intentó Obtener la Base de Datos sin ser ADMIN del BOT...')
+                    except:pass
                 return
             # end
 
