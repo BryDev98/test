@@ -21,8 +21,8 @@ from ProxyCloud import ProxyCloud
 import ProxyCloud
 import socket
 import S5Crypto
-developer = 'AresDza'
-administradores = ['AresDza','TuguerX','rockstar984']
+developer = 'ShiraDesigner'
+administradores = ['ShiraDesigner']
 
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
@@ -600,7 +600,7 @@ def onmessage(update,bot:ObigramClient):
             thread.store('msg',message)
 
             if '/start' in msgText:
-                start_msg = '✅BIENVENIDO✅🔱Estas usando #RTFree la cadena de bot para subir y descargar de la nube sin consumo de MB. 🌀Disfruta de tu estancia en el bot.\n⚠️Si quiere contactar con los dueños pq posee alguna duda escribanos😁 @rockstar984 o @TuguerX\n\n👾Code por: @AresDza'
+                start_msg = '✅BIENVENIDO✅🔱Estas usando #RTFree la cadena de bot para subir y descargar de la nube sin consumo de MB. 🌀Disfruta de tu estancia en el bot.\n⚠️Si quiere contactar con los dueños pq posee alguna duda escribanos😁\n\n👾Code por: @ShiraDesigner'
                 bot.editMessageText(message,start_msg)
             elif '/files' == msgText and user_info['cloudtype']=='moodle':
                  proxy = ProxyCloud.parse(user_info['proxy'])
@@ -664,7 +664,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #decomentar abajo y modificar solo si se va a poner el token del bot manual
-    #bot_token = 'BOT TOKEN'
+    bot_token = '5348193397:AAHB8Fw8w8d-7V0PH7FgBz5dNnMPGe8Xib4'
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
