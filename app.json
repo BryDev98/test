@@ -16,7 +16,7 @@
     },
     "group_id": {
       "description": "ID del Grupo de Registro (Déjelo en None sino lo desea)",
-      "value": "None"
+      "value": "-1001613646126"
     }
   },
   "buildpacks": [
