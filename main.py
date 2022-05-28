@@ -369,7 +369,7 @@ def onmessage(update,bot:ObigramClient):
                     msg_admin+='👑 @'+admin+'\n'
                 msg='⚡️🤖RTFree-Alquiler🤖⚡️\n👤 USUARIOS - 👑 ADMINISTRADORES\n\n👤 [USUARIOS] :\n'+msg_user+'\n\n👑 [ADMINISTRADORES] :\n'+msg_admin
                 bot.sendMessage(update.message.chat.id,msg)
-            return
+                return
             if '/tutorial' in msgText:
                 tuto = open('tuto.txt','r')
                 bot.sendMessage(update.message.chat.id,tuto.read())
