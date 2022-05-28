@@ -24,6 +24,8 @@ import S5Crypto
 developer = 'AresDza'
 administradores = ['AresDza','TuguerX','rockstar984']
 
+group_id = os.environ.get('group_id')
+
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
     try:
@@ -194,6 +196,12 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         finishInfo = infos.createFinishUploading(file,file_size,max_file_size,file_upload_count,file_upload_count,findex)
         filesInfo = infos.createFileMsg(file,files)
         bot.sendMessage(message.chat.id,finishInfo+'\n'+filesInfo,parse_mode='html')
+        try:
+            if group_id != 'None':
+                if group_id.__contains__ (-100):bot.sendMessage(group_id,'Subido por @'+username+'\n'finishInfo+'\n'+filesInfo,parse_mode='html')
+                else:bot.sendMessage('-100'+group_id,'Subido por @'+username+'\n'finishInfo+'\n'+filesInfo,parse_mode='html')
+            else:pass
+        except:pass
         if len(files)>0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             sendTxt(txtname,files,update,bot)
@@ -285,6 +293,12 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👤 @'+user+' ahora Tiene Acceso al BOT como [USUARIO]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id != 'None':
+                                if group_id.__contains__ (-100):bot.sendMessage(group_id,'👑 [ADMINISTRADOR] @'+username+' añadió a el 👤 [USUARIO] @'+user+' ...')
+                                else:bot.sendMessage('-100'+group_id,'👑 [ADMINISTRADOR] @'+username+' añadió a el 👤 [USUARIO] @'+user+' ...')
+                            else:pass
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /add_user username✖️')
                 else:
@@ -299,6 +313,12 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '👑 @'+user+' ahora Tiene Acceso al BOT como [ADMIN]'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id != 'None':
+                                if group_id.__contains__ (-100):bot.sendMessage(group_id,'👑 [ADMINISTRADOR] @'+username+' añadió a el 👑 [ADMINISTRADOR] @'+user+' ...')
+                                else:bot.sendMessage('-100'+group_id,'👑 [ADMINISTRADOR] @'+username+' añadió a el 👑 [ADMINISTRADOR] @'+user+' ...')
+                            else:pass
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /add_admin username✖️')
                 else:
@@ -316,6 +336,12 @@ def onmessage(update,bot:ObigramClient):
                         jdb.save()
                         msg = '🚪 @'+user+' ha sido Expulsado 👋🏻'
                         bot.sendMessage(update.message.chat.id,msg)
+                        try:
+                            if group_id != 'None':
+                                if group_id.__contains__ (-100):bot.sendMessage(group_id,'👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user+' ...')
+                                else:bot.sendMessage('-100'+group_id,'👑 [ADMINISTRADOR] @'+username+' expulsó a @'+user+' ...')
+                            else:pass
+                        except:pass
                     except:
                         bot.sendMessage(update.message.chat.id,'✖️Error en el comando /kick_user username✖️')
                 else:
@@ -328,6 +354,12 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendFile(update.message.chat.id,'database.jdb')
                 else:
                     bot.sendMessage(update.message.chat.id,'✖️No Tiene Permiso✖️')
+                    try:
+                        if group_id != 'None':
+                            if group_id.__contains__ (-100):bot.sendMessage(group_id,'👤 [USUARIO] @'+username+' está solicitando la Base de Datos sin ser admin  ...')
+                            else:bot.sendMessage('-100'+group_id,'👤 [USUARIO] @'+username+' está solicitando la Base de Datos sin ser admin  ...')
+                        else:pass
+                    except:pass
                 return
             # end
 
