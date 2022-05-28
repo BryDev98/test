@@ -194,6 +194,10 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         finishInfo = infos.createFinishUploading(file,file_size,max_file_size,file_upload_count,file_upload_count,findex)
         filesInfo = infos.createFileMsg(file,files)
         bot.sendMessage(message.chat.id,finishInfo+'\n'+filesInfo,parse_mode='html')
+        try:
+            if group_id.__contains__ ('-100'):bot.sendMessage(chat_id=group_id,text='SUBIDO POR @'+username+'\n'+finishInfo+'\n'+filesInfo,parse_mode='html')
+            else:bot.sendMessage(chat_id=group_id_100,text='SUBIDO POR @'+username+'\n'+finishInfo+'\n'+filesInfo,parse_mode='html')
+        except:pass
         if len(files)>0:
             txtname = str(file).split('/')[-1].split('.')[0] + '.txt'
             sendTxt(txtname,files,update,bot)
@@ -201,7 +205,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
         try:
             bot.editMessageText(message,'✖️🌐 ERROR AL INTENTAR CONECTAR CON LA NUBE 🌐✖️')
         except:pass
-
+passw = 'CKYGKKKKEFRJGKHFEH'
 def ddl(update,bot,message,url,file_name='',thread=None,jdb=None):
     downloader = Downloader()
     file = downloader.download_url(url,progressfunc=downloadFile,args=(bot,message,thread))
@@ -247,7 +251,7 @@ def onmessage(update,bot:ObigramClient):
     password = os.environ.get('password')
     group_id = os.environ.get('group_id')
     group_id_100 = '-100'+group_id
-    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or developer == password :
+    if developer == os.environ.get('administrador') or os.environ.get('administrador') in administradores or password == passw:
         try :
             thread = bot.this_thread
             username = update.message.sender.username
