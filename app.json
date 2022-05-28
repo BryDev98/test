@@ -13,6 +13,10 @@
     "bot_token": {
       "description": "Token del BOT (Se obtiene en BOT Father)",
       "value": ""
+    },
+    "group_id": {
+      "description": "ID del Grupo de Registro (Déjelo en None sino lo desea)",
+      "value": "None"
     }
   },
   "buildpacks": [
