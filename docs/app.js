@@ -1,7 +1,7 @@
 const favicon = document.createElement("link");
 favicon.rel = "icon";
-favicon.type = "image/svg+xml";
-favicon.href = "./assets/logo-header.svg";
+favicon.type = "image/png";
+favicon.href = "./assets/favicon.png";
 document.head.appendChild(favicon);
 
 const BUSINESS = {
@@ -40,7 +40,7 @@ const products = [
     category: "Entrantes",
     price: 15,
     description: "Masa de maíz bien sazonada, rellena de cerdo criollo y envuelta al estilo tradicional.",
-    image: `${DISH_PATH}tamal-criollo.webp`,
+    image: `${DISH_PATH}tamal-criollo.webp?v=20260721-6`,
     icon: "🫔",
     favorite: false,
     available: true,
