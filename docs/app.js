@@ -416,6 +416,7 @@ function renderCart() {
 function openCart() {
   lastFocusedElement = document.activeElement;
   cartOverlay.hidden = false;
+  cartDrawer.inert = false;
   cartDrawer.classList.add("open");
   cartDrawer.setAttribute("aria-hidden", "false");
   document.body.classList.add("cart-open");
@@ -425,6 +426,7 @@ function openCart() {
 function closeCart() {
   cartDrawer.classList.remove("open");
   cartDrawer.setAttribute("aria-hidden", "true");
+  cartDrawer.inert = true;
   document.body.classList.remove("cart-open");
   setTimeout(() => {
     cartOverlay.hidden = true;
@@ -657,5 +659,6 @@ renderFavorites();
 renderMenu();
 renderCart();
 restoreCustomerDetails();
+cartDrawer.inert = true;
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 document.querySelector("#year").textContent = new Date().getFullYear();
