@@ -1,6 +1,6 @@
 const mediaStyles = document.createElement("link");
 mediaStyles.rel = "stylesheet";
-mediaStyles.href = "./media.css?v=20260721-3";
+mediaStyles.href = "./media.css?v=20260721-4";
 document.head.appendChild(mediaStyles);
 
 const favicon = document.createElement("link");
