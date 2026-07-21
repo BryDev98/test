@@ -1,6 +1,6 @@
 const mediaStyles = document.createElement("link");
 mediaStyles.rel = "stylesheet";
-mediaStyles.href = "./media.css";
+mediaStyles.href = "./media.css?v=20260721-3";
 document.head.appendChild(mediaStyles);
 
 const favicon = document.createElement("link");
@@ -255,6 +255,10 @@ function money(value) {
   })}`;
 }
 
+function iconMarkup(name, className = "") {
+  return `<svg class="ui-icon ${className}" aria-hidden="true" focusable="false"><use href="#icon-${name}"></use></svg>`;
+}
+
 function saveCart() {
   localStorage.setItem("abdelito-cart", JSON.stringify(cart));
 }
@@ -290,7 +294,7 @@ function photo(product, className, eager = false) {
 function favoriteCard(product) {
   return `
     <article class="favorite-card reveal">
-      <div class="favorite-art has-photo" data-icon="${product.icon}">${photo(product, "favorite-photo")}</div>
+      <div class="favorite-art has-photo">${iconMarkup("chef", "dish-fallback")}${photo(product, "favorite-photo")}</div>
       <div class="favorite-content">
         <p class="eyebrow">${product.category}</p>
         <h3>${product.name}</h3>
@@ -307,7 +311,8 @@ function productCard(product) {
   const qty = cardQuantities[product.id] || 1;
   return `
     <article class="product-card" data-category="${product.category}" data-product-id="${product.id}">
-      <div class="dish-art has-photo" data-icon="${product.icon}">
+      <div class="dish-art has-photo">
+        ${iconMarkup("chef", "dish-fallback")}
         ${photo(product, "menu-photo")}
         <span class="category-chip">${product.category}</span>
       </div>
@@ -345,7 +350,7 @@ function renderMenu() {
   menuList.innerHTML = filtered.length
     ? filtered.map(productCard).join("")
     : `<div class="menu-empty-state">
-        <span aria-hidden="true">🔎</span>
+        <span class="menu-empty-icon">${iconMarkup("search")}</span>
         <h3>No encontramos ese plato</h3>
         <p>Prueba otra palabra o vuelve a ver toda la carta.</p>
         <button type="button" class="button button-ghost" data-reset-menu>Ver toda la carta</button>
@@ -584,7 +589,6 @@ function installPhotoStyles() {
 function applyBrandMedia() {
   document.querySelectorAll(".brand").forEach((brand) => {
     brand.classList.add("brand-with-logo");
-    brand.innerHTML = '<img class="brand-logo" src="./assets/logo-header.svg" alt="Abdelito Cocina Cubana">';
   });
 
   const heroDish = document.querySelector(".hero-dish");

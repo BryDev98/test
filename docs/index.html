@@ -16,14 +16,30 @@
   <link rel="stylesheet" href="./a.css">
   <link rel="stylesheet" href="./b.css">
   <link rel="stylesheet" href="./ux.css">
-  <link rel="stylesheet" href="./growth.css?v=20260721-2">
+  <link rel="stylesheet" href="./growth.css?v=20260721-3">
   <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 </head>
 <body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 7H6M10 20h.01M17 20h.01"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 20.5 11.7Z"/><path d="M8.3 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.8c.1.3 0 .5-.2.7l-.6.7c-.2.2-.1.4 0 .6.8 1.5 2 2.6 3.5 3.3.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .5-.2 1.5-.8 2-.6.6-1.5.8-2.3.6-1.3-.3-3.2-1-5.1-2.8-1.5-1.5-2.5-3.2-2.8-4.6-.2-.8.1-1.7.5-2.3Z"/></symbol>
+    <symbol id="icon-location" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="icon-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 15h3"/></symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 15a3 3 0 0 1-3 3H9l-5 3v-6a3 3 0 0 1-1-2.2V7a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v8Z"/><path d="M8 9h8M8 13h5"/></symbol>
+    <symbol id="icon-chef" viewBox="0 0 24 24"><path d="M7 10a4 4 0 0 1 1-7.9A5 5 0 0 1 17 4a3.5 3.5 0 0 1 0 6H7ZM7 10v9h10v-9M9 15h6"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 8"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.9 8.3 7 10 4.1-1.7 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5.5 9.5V21h13V9.5M9 21v-6h6v6"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-delivery" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="icon-smartphone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 5h4M11 19h2"/></symbol>
+    <symbol id="icon-bank" viewBox="0 0 24 24"><path d="m3 9 9-5 9 5M5 10v7M9.5 10v7M14.5 10v7M19 10v7M3 20h18"/></symbol>
+  </svg>
   <a class="skip-link" href="#menu">Saltar al menú</a>
   <header class="site-header" id="inicio">
     <div class="container nav-wrap">
-      <a class="brand" href="#inicio" aria-label="Abdelito Cocina Cubana, inicio"><span class="brand-mark" aria-hidden="true">A</span><span><strong>Abdelito</strong><small>Cocina Cubana</small></span></a>
+      <a class="brand brand-with-logo" href="#inicio" aria-label="Abdelito Cocina Cubana, inicio"><img class="brand-logo" src="./assets/logo-header-v2.webp" width="480" height="310" alt="Abdelito Cocina Cubana"></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="#menu">Menú</a>
@@ -32,7 +48,7 @@
         <a href="#confianza">Confianza</a>
         <a href="#faq">Preguntas</a>
       </nav>
-      <button class="cart-button" type="button" data-open-cart aria-label="Abrir carrito"><span aria-hidden="true">🛒</span><span>Pedido</span><strong data-cart-count>0</strong></button>
+      <button class="cart-button" type="button" data-open-cart aria-label="Abrir carrito"><svg class="ui-icon" aria-hidden="true"><use href="#icon-cart"></use></svg><span>Pedido</span><strong data-cart-count>0</strong></button>
     </div>
   </header>
 
@@ -47,8 +63,8 @@
           <p class="eyebrow">Cocina cubana casera · Lima</p>
           <h1>Sabor cubano de verdad, <em>directo a tu mesa.</em></h1>
           <p class="hero-lead">Platos con sazón de casa, preparados al momento y coordinados directamente por WhatsApp.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#menu">Ver el menú</a><a class="button button-ghost" href="https://wa.me/51973604660?text=Hola%20Abdelito%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir por WhatsApp</a></div>
-          <ul class="trust-list" aria-label="Beneficios"><li>✓ Comida casera</li><li>✓ Preparado al momento</li><li>✓ Delivery en Lima</li></ul>
+          <div class="hero-actions"><a class="button button-primary" href="#menu">Ver el menú</a><a class="button button-ghost" href="https://wa.me/51973604660?text=Hola%20Abdelito%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>Pedir por WhatsApp</a></div>
+          <ul class="trust-list" aria-label="Beneficios"><li><svg class="ui-icon" aria-hidden="true"><use href="#icon-home"></use></svg>Comida casera</li><li><svg class="ui-icon" aria-hidden="true"><use href="#icon-clock"></use></svg>Preparado al momento</li><li><svg class="ui-icon" aria-hidden="true"><use href="#icon-delivery"></use></svg>Delivery en Lima</li></ul>
         </div>
         <div class="hero-visual reveal" aria-label="Selección de platos cubanos">
           <div class="hero-card hero-card-main"><span class="hero-card-label">Favorito de la casa</span><div class="hero-dish hero-dish-rice" role="img" aria-label="Arroz Imperial"></div><div class="hero-card-info"><div><strong>Arroz Imperial</strong><small>El clásico que nunca falla</small></div><b>S/ 25</b></div></div>
@@ -96,17 +112,17 @@
     </section>
 
     <section class="section info-band">
-      <div class="container info-grid"><article><span aria-hidden="true">📍</span><div><strong>Delivery en Lima</strong><p>El costo se confirma según la zona.</p></div></article><article><span aria-hidden="true">💳</span><div><strong>Pagos directos</strong><p>Yape, Plin o transferencia bancaria.</p></div></article><article><span aria-hidden="true">💬</span><div><strong>Atención real</strong><p>Coordinación directa por WhatsApp.</p></div></article></div>
+      <div class="container info-grid"><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-location"></use></svg></span><div><strong>Delivery en Lima</strong><p>El costo se confirma según la zona.</p></div></article><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-card"></use></svg></span><div><strong>Pagos directos</strong><p>Yape, Plin o transferencia bancaria.</p></div></article><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chat"></use></svg></span><div><strong>Atención real</strong><p>Coordinación directa por WhatsApp.</p></div></article></div>
     </section>
 
     <section class="section" id="confianza">
       <div class="container">
         <div class="section-heading reveal"><div><p class="eyebrow">Compra con claridad</p><h2>Lo que puedes esperar</h2></div><p>Información concreta antes de pagar: disponibilidad, total y coordinación directa.</p></div>
         <div class="trust-proof-grid">
-          <article class="proof-card"><div class="proof-icon">🍲</div><h3>Preparado al momento</h3><p>Cada pedido se confirma antes de entrar a cocina.</p></article>
-          <article class="proof-card"><div class="proof-icon">✅</div><h3>Disponibilidad visible</h3><p>La carta distingue platos disponibles, agotados y por encargo.</p></article>
-          <article class="proof-card"><div class="proof-icon">💬</div><h3>Trato directo</h3><p>Sin intermediarios: coordinas con Abdelito por WhatsApp.</p></article>
-          <article class="proof-card"><div class="proof-icon">💳</div><h3>Pago confirmado</h3><p>Los datos y el total final se validan antes del comprobante.</p></article>
+          <article class="proof-card"><div class="proof-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-chef"></use></svg></div><h3>Preparado al momento</h3><p>Cada pedido se confirma antes de entrar a cocina.</p></article>
+          <article class="proof-card"><div class="proof-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-check"></use></svg></div><h3>Disponibilidad visible</h3><p>La carta distingue platos disponibles, agotados y por encargo.</p></article>
+          <article class="proof-card"><div class="proof-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-chat"></use></svg></div><h3>Trato directo</h3><p>Sin intermediarios: coordinas con Abdelito por WhatsApp.</p></article>
+          <article class="proof-card"><div class="proof-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg></div><h3>Pago confirmado</h3><p>Los datos y el total final se validan antes del comprobante.</p></article>
         </div>
         <div class="reviews-shell" data-testimonials><div><h3>¿Ya probaste Abdelito Cocina?</h3><p>Las opiniones publicadas serán de clientes reales. Cuéntanos qué pediste y cómo te fue.</p></div><a class="button button-light" href="https://wa.me/51973604660?text=Hola%20Abdelito%2C%20quiero%20dejar%20una%20opini%C3%B3n%20sobre%20mi%20pedido" target="_blank" rel="noopener">Dejar mi opinión</a></div>
       </div>
@@ -134,18 +150,18 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid"><div><a class="brand footer-brand" href="#inicio"><span class="brand-mark">A</span><span><strong>Abdelito</strong><small>Cocina Cubana</small></span></a><p>Sabor cubano casero en Lima, preparado para compartir.</p></div><div><strong>Pedido principal</strong><a href="https://wa.me/51973604660" target="_blank" rel="noopener">+51 973 604 660</a></div><div><strong>Contactos alternativos</strong><a href="tel:+51904681073">+51 904 681 073</a><a href="tel:+51904499915">+51 904 499 915</a><a href="tel:+51997583788">+51 997 583 788</a></div><div><strong>Síguenos</strong><span>Instagram · Próximamente</span><span>TikTok · Próximamente</span></div></div>
+    <div class="container footer-grid"><div><a class="brand footer-brand brand-with-logo" href="#inicio"><img class="brand-logo" src="./assets/logo-full.webp" width="560" height="560" alt="Abdelito Cocina Cubana · Sabores que te transportan a Cuba"></a><p>Sabor cubano casero en Lima, preparado para compartir.</p></div><div><strong>Pedido principal</strong><a href="https://wa.me/51973604660" target="_blank" rel="noopener">+51 973 604 660</a></div><div><strong>Contactos alternativos</strong><a href="tel:+51904681073">+51 904 681 073</a><a href="tel:+51904499915">+51 904 499 915</a><a href="tel:+51997583788">+51 997 583 788</a></div><div><strong>Síguenos</strong><span>Instagram · Próximamente</span><span>TikTok · Próximamente</span></div></div>
     <div class="container footer-bottom"><span>© <span id="year"></span> Abdelito Cocina Cubana</span><span>Hecho con sazón y estrategia.</span></div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/51973604660?text=Hola%20Abdelito%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">WA</a>
+  <a class="whatsapp-float" href="https://wa.me/51973604660?text=Hola%20Abdelito%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp"><svg class="ui-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a>
   <button class="mobile-cart-bar" type="button" data-open-cart data-mobile-cart aria-label="Ver mi pedido"><span class="mobile-cart-copy"><span class="mobile-cart-count" data-mobile-cart-count>0</span><span>Ver mi pedido</span></span><span class="mobile-cart-total" data-mobile-cart-total>S/ 0</span></button>
 
   <div class="cart-overlay" data-cart-overlay hidden></div>
   <aside class="cart-drawer" data-cart-drawer aria-hidden="true" aria-labelledby="cart-title">
     <div class="cart-head"><div><p class="eyebrow">Tu selección</p><h2 id="cart-title">Mi pedido</h2></div><div class="cart-head-actions"><button class="clear-cart" type="button" data-clear-cart hidden>Vaciar</button><button class="icon-button" type="button" data-close-cart aria-label="Cerrar carrito">×</button></div></div>
     <div class="cart-body">
-      <div class="cart-empty" data-cart-empty><span>🛒</span><strong>Tu carrito está vacío</strong><p>Agrega algo rico del menú para comenzar.</p></div>
+      <div class="cart-empty" data-cart-empty><span class="cart-empty-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-cart"></use></svg></span><strong>Tu carrito está vacío</strong><p>Agrega algo rico del menú para comenzar.</p></div>
       <div class="cart-items" data-cart-items></div>
       <section class="cart-upsell" data-cart-upsell hidden><div class="cart-upsell-head"><strong>Completa tu pedido</strong><span>Recomendado</span></div><div class="upsell-list" data-upsell-list></div></section>
       <form class="checkout-form" data-checkout-form novalidate>
@@ -158,7 +174,7 @@
         <p class="form-error" data-form-error role="alert"></p>
       </form>
     </div>
-    <div class="cart-footer"><div class="summary-row"><span>Subtotal</span><strong data-subtotal>S/ 0</strong></div><div class="summary-row muted"><span>Delivery</span><span>Se confirma según zona</span></div><button class="button button-primary button-full" type="button" data-send-order>Confirmar por WhatsApp</button><small>Se abrirá WhatsApp con tu pedido, modalidad y pago preferido.</small></div>
+    <div class="cart-footer"><div class="summary-row"><span>Subtotal</span><strong data-subtotal>S/ 0</strong></div><div class="summary-row muted"><span>Delivery</span><span>Se confirma según zona</span></div><button class="button button-primary button-full" type="button" data-send-order><svg class="ui-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>Confirmar por WhatsApp</button><small>Se abrirá WhatsApp con tu pedido, modalidad y pago preferido.</small></div>
   </aside>
 
   <div class="order-confirmation" data-order-confirmation hidden>
@@ -169,7 +185,7 @@
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
   <script src="./business-config.js"></script>
-  <script src="./app.js"></script>
-  <script src="./growth.js?v=20260721-2"></script>
+  <script src="./app.js?v=20260721-3"></script>
+  <script src="./growth.js?v=20260721-3"></script>
 </body>
 </html>

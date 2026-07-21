@@ -91,7 +91,8 @@
     const action = unavailable ? "Agotado" : status === "preorder" ? "Encargar" : "Agregar";
     return `
       <article class="product-card ${meta.className}" data-category="${safeText(product.category)}" data-product-id="${safeText(product.id)}">
-        <div class="dish-art has-photo" data-icon="${safeText(product.icon)}">
+        <div class="dish-art has-photo">
+          ${iconMarkup("chef", "dish-fallback")}
           ${photo(product, "menu-photo")}
           <span class="category-chip">${safeText(product.category)}</span>
           <span class="availability-chip ${meta.className}">${meta.label}</span>
@@ -119,7 +120,7 @@
     const unavailable = status === "soldout";
     return `
       <article class="favorite-card ${unavailable ? "is-soldout" : ""}">
-        <div class="favorite-art has-photo" data-icon="${safeText(product.icon)}">${photo(product, "favorite-photo")}</div>
+        <div class="favorite-art has-photo">${iconMarkup("chef", "dish-fallback")}${photo(product, "favorite-photo")}</div>
         <div class="favorite-content">
           <p class="eyebrow">${safeText(product.category)} · ${statusMeta(status).label}</p>
           <h3>${safeText(product.name)}</h3>
@@ -141,7 +142,7 @@
     });
     menuList.innerHTML = filtered.length
       ? filtered.map(productCard).join("")
-      : `<div class="menu-empty-state"><span aria-hidden="true">🔎</span><h3>No encontramos ese plato</h3><p>Prueba otra palabra o vuelve a ver toda la carta.</p><button type="button" class="button button-ghost" data-reset-menu>Ver toda la carta</button></div>`;
+      : `<div class="menu-empty-state"><span class="menu-empty-icon">${iconMarkup("search")}</span><h3>No encontramos ese plato</h3><p>Prueba otra palabra o vuelve a ver toda la carta.</p><button type="button" class="button button-ghost" data-reset-menu>Ver toda la carta</button></div>`;
     if (menuResultCount) menuResultCount.textContent = `${filtered.length} ${filtered.length === 1 ? "opción" : "opciones"}`;
     if (clearSearchButton) clearSearchButton.hidden = !currentSearch;
   };
@@ -238,8 +239,10 @@
   function renderPayments() {
     const target = document.querySelector("[data-payment-options]");
     if (!target) return;
-    target.innerHTML = enabledPayments().map(([id, payment], index) => `
-      <label class="payment-option"><input type="radio" name="payment" value="${id}" ${index === 0 ? "checked" : ""}><span>${safeText(payment.label || id)}</span></label>`).join("");
+    target.innerHTML = enabledPayments().map(([id, payment], index) => {
+      const paymentIcon = id === "transfer" || id === "bank" ? "bank" : "smartphone";
+      return `<label class="payment-option"><input type="radio" name="payment" value="${id}" ${index === 0 ? "checked" : ""}><span>${iconMarkup(paymentIcon)}${safeText(payment.label || id)}</span></label>`;
+    }).join("");
   }
 
   function orderCode() {
