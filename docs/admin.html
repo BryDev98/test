@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Panel operativo | Abdelito Cocina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <div class="lock-screen" data-lock>
+    <div class="lock-card"><img src="./assets/logo-header.svg" alt="Abdelito Cocina Cubana"><h1 data-lock-title>Protege este panel</h1><p data-lock-copy>Crea un PIN de al menos 4 dígitos. La protección y los datos se guardan únicamente en este navegador.</p><form data-lock-form><input type="password" inputmode="numeric" autocomplete="current-password" minlength="4" maxlength="12" placeholder="PIN" data-pin required><button class="button" type="submit">Continuar</button><div class="lock-error" data-lock-error></div></form></div>
+  </div>
+  <div class="admin-shell">
+    <header class="admin-header"><div class="admin-header-inner"><div class="admin-brand"><img src="./assets/logo-header.svg" alt="Abdelito Cocina"><span>Panel operativo</span></div><a href="./" target="_blank" rel="noopener">Ver tienda ↗</a></div></header>
+    <main class="admin-main">
+      <div class="notice"><strong>Panel local:</strong> los pedidos, estados y métricas se guardan en este dispositivo. Los cambios de disponibilidad pueden previsualizarse aquí; para que sean globales deben publicarse en la configuración de la web.</div>
+      <section class="dashboard-grid"><article class="metric"><small>Pedidos registrados</small><strong data-metric-orders>0</strong></article><article class="metric"><small>Ventas registradas</small><strong data-metric-sales>S/ 0</strong></article><article class="metric"><small>En preparación</small><strong data-metric-preparing>0</strong></article><article class="metric"><small>Producto más pedido</small><strong data-metric-top>—</strong></article></section>
+      <div class="admin-grid">
+        <div>
+          <section class="panel"><h2>Registrar pedido de WhatsApp</h2><p class="panel-intro">Pasa el pedido confirmado al panel para controlar preparación, entrega e historial.</p><form data-order-form><div class="field-grid"><div class="field"><label for="order-name">Cliente *</label><input id="order-name" name="name" required></div><div class="field"><label for="order-phone">WhatsApp</label><input id="order-phone" name="phone" inputmode="tel"></div><div class="field"><label for="order-method">Modalidad</label><select id="order-method" name="method"><option>Delivery</option><option>Recojo</option></select></div><div class="field"><label for="order-code">Código</label><input id="order-code" name="code" placeholder="AC-..."></div><div class="field full"><label for="order-product">Agregar producto</label><div class="field-grid"><select id="order-product" data-order-product></select><input type="number" min="1" max="20" value="1" aria-label="Cantidad" data-order-qty></div><button class="button ghost small" type="button" data-add-draft>Agregar producto</button></div><div class="field full"><div class="draft-items" data-draft-items></div></div><div class="field full"><label for="order-notes">Notas</label><textarea id="order-notes" name="notes" rows="2"></textarea></div></div><div class="button-row"><button class="button" type="submit">Registrar pedido</button><strong data-draft-total>S/ 0</strong></div></form></section>
+          <section class="panel"><h2>Flujo de pedidos</h2><p class="panel-intro">Actualiza cada pedido: recibido, preparando, listo, enviado o cancelado.</p><div class="order-table-wrap" data-order-table></div><div class="button-row"><button class="button secondary small" type="button" data-export-orders>Exportar CSV</button><button class="button ghost small" type="button" data-clear-completed>Archivar finalizados</button></div></section>
+        </div>
+        <div>
+          <section class="panel"><h2>Estado de la cocina</h2><p class="panel-intro">Control local para preparar la próxima publicación.</p><div class="field-grid"><div class="field"><label for="service-mode">Servicio</label><select id="service-mode" data-service-mode><option value="open">Recibiendo pedidos</option><option value="closed">Solo pedidos programados</option></select></div><div class="field"><label for="hours-label">Mensaje de horario</label><input id="hours-label" data-hours-label placeholder="Horario se confirma por WhatsApp"></div></div><div class="button-row"><button class="button" type="button" data-save-service>Guardar en este equipo</button><button class="button secondary" type="button" data-export-config>Descargar configuración</button></div></section>
+          <section class="panel"><h2>Disponibilidad de platos</h2><p class="panel-intro">Marca cada producto como disponible, agotado o por encargo.</p><div class="catalog-admin" data-catalog-admin></div><div class="button-row"><button class="button" type="button" data-save-availability>Guardar estados</button></div></section>
+          <section class="panel"><h2>Productos más vendidos</h2><div class="seller-list" data-seller-list></div></section>
+          <section class="panel"><h2>Embudo medido en este navegador</h2><p class="panel-intro">Los píxeles externos se activan cuando se agreguen sus identificadores y el visitante acepte la medición.</p><div class="event-grid" data-event-grid></div></section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="toast" data-admin-toast></div>
+  <script src="./business-config.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>
