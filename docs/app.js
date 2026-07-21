@@ -58,7 +58,7 @@ return `
 function productCard(product) {
 const qty = cardQuantities[product.id] || 1;
 return `
-<article class="product-card" data-category="${product.category}">
+<article class="product-card" data-category="${product.category}" data-product-id="${product.id}">
 <div class="dish-art" data-icon="${product.icon}"><span class="category-chip">${product.category}</span></div>
 <div class="product-content">
 <h3>${product.name}</h3>
