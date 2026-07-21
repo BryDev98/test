@@ -118,7 +118,7 @@
     const status = productStatus(product);
     const unavailable = status === "soldout";
     return `
-      <article class="favorite-card reveal ${unavailable ? "is-soldout" : ""}">
+      <article class="favorite-card ${unavailable ? "is-soldout" : ""}">
         <div class="favorite-art has-photo" data-icon="${safeText(product.icon)}">${photo(product, "favorite-photo")}</div>
         <div class="favorite-content">
           <p class="eyebrow">${safeText(product.category)} · ${statusMeta(status).label}</p>
@@ -151,15 +151,30 @@
     if (!target) return;
     target.innerHTML = bundles.map((bundle) => {
       const enabled = bundleAvailable(bundle);
+      const totalUnits = bundle.items.reduce((sum, [, quantity]) => sum + quantity, 0);
+      const itemPhotos = bundle.items.slice(0, 3).map(([id]) => {
+        const item = productById(id);
+        return item ? `<img src="${safeText(item.image)}" alt="" loading="lazy">` : "";
+      }).join("");
       const itemLines = bundle.items.map(([id, quantity]) => {
         const item = productById(id);
-        return `<li>${quantity}× ${safeText(item?.name || id)}</li>`;
+        return `<li><b>${quantity}×</b><span>${safeText(item?.name || id)}</span></li>`;
       }).join("");
       return `<article class="combo-card">
-        <div class="combo-card-top"><h3>${safeText(bundle.name)}</h3><span class="combo-tag">${safeText(bundle.tag)}</span></div>
-        <p>${safeText(bundle.description)}</p>
-        <ul class="combo-items">${itemLines}</ul>
-        <div class="combo-bottom"><span class="combo-price"><small>Total de la selección</small><strong>${money(bundleTotal(bundle))}</strong></span><button class="combo-add" type="button" data-add-bundle="${bundle.id}" ${enabled ? "" : "disabled"}>${enabled ? "Agregar combo" : "No disponible"}</button></div>
+        <div class="combo-media">
+          <div class="combo-photo-stack">${itemPhotos}</div>
+          <span class="combo-tag">${safeText(bundle.tag)}</span>
+        </div>
+        <div class="combo-content">
+          <div class="combo-card-top">
+            <div><span class="combo-kicker">Combo Abdelito</span><h3>${safeText(bundle.name)}</h3></div>
+            <span class="combo-count">${totalUnits} ${totalUnits === 1 ? "producto" : "productos"}</span>
+          </div>
+          <p class="combo-description">${safeText(bundle.description)}</p>
+          <div class="combo-includes"><strong>Esto incluye</strong><span>Todo se agrega al carrito</span></div>
+          <ul class="combo-items">${itemLines}</ul>
+          <div class="combo-bottom"><span class="combo-price"><small>Precio total</small><strong>${money(bundleTotal(bundle))}</strong></span><button class="combo-add" type="button" data-add-bundle="${bundle.id}" ${enabled ? "" : "disabled"}>${enabled ? "Agregar combo" : "No disponible"}</button></div>
+        </div>
       </article>`;
     }).join("");
   }
