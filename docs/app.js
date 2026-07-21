@@ -1,8 +1,3 @@
-const mediaStyles = document.createElement("link");
-mediaStyles.rel = "stylesheet";
-mediaStyles.href = "./media.css?v=20260721-4";
-document.head.appendChild(mediaStyles);
-
 const favicon = document.createElement("link");
 favicon.rel = "icon";
 favicon.type = "image/svg+xml";
@@ -33,7 +28,7 @@ const products = [
     name: "Ensalada Tropical de la Casa",
     category: "Entrantes",
     price: 10,
-    description: "Ensalada fría cubana con pasta, piña, huevo, mayonesa y el sazón especial de la casa.",
+    description: "Ensalada fría cubana con pasta, jamón, piña, huevo, mayonesa y el sazón especial de la casa.",
     image: `${DISH_PATH}ensalada-tropical.webp`,
     icon: "🥗",
     favorite: false,
