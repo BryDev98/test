@@ -14,86 +14,193 @@ const BUSINESS = {
   currency: "S/",
 };
 
+const DISH_PATH = "./assets/dishes/";
+
 const products = [
   {
-    id: "tamal-habanero",
-    name: "Tamal Habanero",
+    id: "croquetas-jamon",
+    name: "Croquetas de Jamón de la Abuela",
+    category: "Entrantes",
+    price: 12.9,
+    description: "Seis croquetas caseras de jamón, crujientes por fuera y cremosas por dentro.",
+    image: `${DISH_PATH}croquetas-jamon.webp`,
+    icon: "🥖",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "ensalada-tropical",
+    name: "Ensalada Tropical de la Casa",
+    category: "Entrantes",
+    price: 10,
+    description: "Ensalada fría cubana con pasta, piña, huevo, mayonesa y el sazón especial de la casa.",
+    image: `${DISH_PATH}ensalada-tropical.webp`,
+    icon: "🥗",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "tamal-criollo",
+    name: "Tamal Criollo Habanero",
     category: "Entrantes",
     price: 15,
-    description: "Tamal cubano casero, suave, bien sazonado y con relleno generoso.",
+    description: "Masa de maíz bien sazonada, rellena de cerdo criollo y envuelta al estilo tradicional.",
+    image: `${DISH_PATH}tamal-criollo.webp`,
     icon: "🫔",
-    image: "./assets/tamal-habanero.webp",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "ropa-vieja",
+    name: "Ropa Vieja Tradicional",
+    category: "Platos fuertes",
+    price: 29.9,
+    description: "Res deshilachada en sazón cubana con arroz congrí, ensalada y yuca con mojo criollo.",
+    image: `${DISH_PATH}ropa-vieja.webp`,
+    icon: "🥘",
     favorite: true,
     available: true,
   },
   {
-    id: "arroz-imperial",
-    name: "Arroz Imperial",
+    id: "lechon-asado",
+    name: "Lechón Asado a lo Cubano",
+    category: "Platos fuertes",
+    price: 27,
+    description: "Cerdo al horno jugoso con arroz congrí, ensalada y yuca con mojo criollo.",
+    image: `${DISH_PATH}lechon-asado.webp`,
+    icon: "🍖",
+    favorite: true,
+    available: true,
+  },
+  {
+    id: "arroz-imperial-personal",
+    name: "Arroz Imperial de Abdelito · Personal",
     category: "Platos fuertes",
     price: 25,
-    description: "Arroz cremoso por capas, pollo sazonado, mayonesa y queso gratinado.",
+    description: "Arroz amarillo por capas con mayonesa, pollo deshilachado, jamón y mozzarella gratinada.",
+    image: `${DISH_PATH}arroz-imperial.webp`,
     icon: "🍚",
     favorite: true,
     available: true,
   },
   {
-    id: "lasagna-carne",
-    name: "Lasagna de Carne",
+    id: "arroz-imperial-familiar",
+    name: "Arroz Imperial de Abdelito · Familiar",
+    category: "Platos fuertes",
+    price: 45,
+    description: "La versión familiar de nuestro arroz por capas con pollo, jamón, mayonesa y queso gratinado.",
+    image: `${DISH_PATH}arroz-imperial.webp`,
+    icon: "🍚",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "lasana-habanera",
+    name: "Lasaña Habanera de Carne",
     category: "Platos fuertes",
     price: 20,
-    description: "Capas generosas de pasta, carne sazonada, salsa y queso gratinado.",
+    description: "Capas de pasta, carne sazonada al estilo de la casa, salsa roja y abundante queso gratinado.",
+    image: `${DISH_PATH}lasana-carne.webp`,
     icon: "🍝",
     favorite: false,
     available: true,
   },
   {
-    id: "bistec-encebollado",
-    name: "Bistec Encebollado",
+    id: "bistec-malecon",
+    name: "Bistec Encebollado del Malecón",
     category: "Platos fuertes",
     price: 27,
-    description: "Bistec jugoso con abundante cebolla dorada y sazón casera.",
+    description: "Bistec jugoso con cebolla salteada, arroz congrí, ensalada y yuca con mojo criollo.",
+    image: `${DISH_PATH}bistec-encebollado.webp`,
     icon: "🥩",
     favorite: false,
     available: true,
   },
   {
-    id: "pollo-rostizado",
-    name: "Pollo Rostizado",
+    id: "pollo-guajiro",
+    name: "Pollo Rostizado del Guajiro",
     category: "Platos fuertes",
     price: 25,
-    description: "Pollo marinado, dorado por fuera y jugoso por dentro.",
+    description: "Pollo dorado y adobado con sazón de la casa, arroz congrí, ensalada y yuca con mojo.",
+    image: `${DISH_PATH}pollo-rostizado.webp`,
     icon: "🍗",
-    image: "./assets/pollo-rostizado.webp",
-    favorite: true,
+    favorite: false,
     available: true,
   },
   {
-    id: "asado-cerdo",
-    name: "Asado de Cerdo en Cazuela",
+    id: "cerdo-cazuela",
+    name: "Asado de Cerdo en Cazuela del Fogón",
     category: "Platos fuertes",
     price: 27,
-    description: "Cerdo tierno cocinado lentamente con salsa criolla.",
-    icon: "🍖",
+    description: "Cerdo cocinado lentamente en cazuela con sazón cubana, arroz congrí, ensalada y yuca.",
+    image: `${DISH_PATH}cerdo-cazuela.webp`,
+    icon: "🍲",
     favorite: false,
     available: true,
   },
   {
     id: "flan-abuela",
     name: "Flan de la Abuela",
-    category: "Dulces",
+    category: "Postres",
     price: 7,
-    description: "Flan cremoso de receta tradicional con caramelo.",
+    description: "Flan casero suave y cremoso con el dulzor clásico que recuerda a la cocina de casa.",
+    image: `${DISH_PATH}flan-abuela.webp`,
     icon: "🍮",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "torrija-cubana",
+    name: "Torrija Cubana Dorada",
+    category: "Postres",
+    price: 9,
+    description: "Pan suave dorado con canela y dulzor tradicional, perfecto para cerrar con sabor cubano.",
+    image: `${DISH_PATH}torrija-cubana.webp`,
+    icon: "🍞",
     favorite: false,
     available: true,
   },
   {
     id: "arroz-leche",
     name: "Arroz con Leche y Lluvia de Chocolate",
-    category: "Dulces",
+    category: "Postres",
     price: 10,
-    description: "Arroz con leche cremoso terminado con una lluvia de chocolate.",
+    description: "Arroz con leche cremoso, aromatizado con canela y coronado con lluvia de chocolate.",
+    image: `${DISH_PATH}arroz-leche.webp`,
     icon: "🍫",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "platano-maduro",
+    name: "Plátano Maduro Frito",
+    category: "Porciones extras",
+    price: 6,
+    description: "Tajadas de plátano maduro, doradas y caramelizadas al punto.",
+    image: `${DISH_PATH}platano-maduro.webp`,
+    icon: "🍌",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "tostones",
+    name: "Tostones Crujientes",
+    category: "Porciones extras",
+    price: 6,
+    description: "Plátano verde frito dos veces, crujiente por fuera y tierno en el centro.",
+    image: `${DISH_PATH}tostones.webp`,
+    icon: "🟡",
+    favorite: false,
+    available: true,
+  },
+  {
+    id: "arroz-congris",
+    name: "Arroz Congrí",
+    category: "Porciones extras",
+    price: 8,
+    description: "Arroz con frijoles negros y sazón cubana, listo para completar tu plato.",
+    image: `${DISH_PATH}arroz-congris.webp`,
+    icon: "🍚",
     favorite: false,
     available: true,
   },
@@ -115,7 +222,12 @@ let cart = JSON.parse(localStorage.getItem("abdelito-cart") || "{}");
 const cardQuantities = {};
 
 function money(value) {
-  return `${BUSINESS.currency} ${Number(value).toFixed(0)}`;
+  const number = Number(value);
+  const decimals = Number.isInteger(number) ? 0 : 2;
+  return `${BUSINESS.currency} ${number.toLocaleString("es-PE", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: 2,
+  })}`;
 }
 
 function saveCart() {
@@ -133,25 +245,14 @@ function productById(id) {
   return products.find((product) => product.id === id);
 }
 
-function photoMarkup(product, className, includeCategory = false) {
-  const category = includeCategory
-    ? `<span class="category-chip">${product.category}</span>`
-    : "";
-
-  if (product.image) {
-    return `<div class="${className} has-photo">
-      <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
-      ${category}
-    </div>`;
-  }
-
-  return `<div class="${className}" data-icon="${product.icon}">${category}</div>`;
+function photo(product, className, eager = false) {
+  return `<img class="dish-photo ${className}" src="${product.image}" alt="${product.name}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" onerror="this.parentElement.classList.remove('has-photo');this.remove()">`;
 }
 
 function favoriteCard(product) {
   return `
     <article class="favorite-card reveal">
-      ${photoMarkup(product, "favorite-art")}
+      <div class="favorite-art has-photo" data-icon="${product.icon}">${photo(product, "favorite-photo")}</div>
       <div class="favorite-content">
         <p class="eyebrow">${product.category}</p>
         <h3>${product.name}</h3>
@@ -168,7 +269,10 @@ function productCard(product) {
   const qty = cardQuantities[product.id] || 1;
   return `
     <article class="product-card" data-category="${product.category}" data-product-id="${product.id}">
-      ${photoMarkup(product, "dish-art", true)}
+      <div class="dish-art has-photo" data-icon="${product.icon}">
+        ${photo(product, "menu-photo")}
+        <span class="category-chip">${product.category}</span>
+      </div>
       <div class="product-content">
         <h3>${product.name}</h3>
         <p>${product.description}</p>
@@ -188,16 +292,11 @@ function productCard(product) {
 }
 
 function renderFavorites() {
-  favoritesList.innerHTML = products
-    .filter((product) => product.favorite)
-    .map(favoriteCard)
-    .join("");
+  favoritesList.innerHTML = products.filter((product) => product.favorite).map(favoriteCard).join("");
 }
 
 function renderMenu(filter = "all") {
-  const filtered = products.filter(
-    (product) => product.available && (filter === "all" || product.category === filter),
-  );
+  const filtered = products.filter((product) => product.available && (filter === "all" || product.category === filter));
   menuList.innerHTML = filtered.map(productCard).join("");
 }
 
@@ -231,32 +330,24 @@ function cartEntries() {
 function renderCart() {
   const entries = cartEntries();
   const totalItems = entries.reduce((sum, item) => sum + item.quantity, 0);
-  const total = entries.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-
+  const total = entries.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   cartCount.textContent = totalItems;
   subtotal.textContent = money(total);
   cartEmpty.hidden = entries.length > 0;
-  cartItems.innerHTML = entries
-    .map(
-      ({ product, quantity }) => `
-        <div class="cart-line">
-          <div>
-            <div class="cart-line-title">${product.name}</div>
-            <div class="cart-line-meta">${money(product.price)} × ${quantity}</div>
-            <div class="cart-line-actions">
-              <button type="button" data-cart-minus="${product.id}" aria-label="Restar ${product.name}">−</button>
-              <strong>${quantity}</strong>
-              <button type="button" data-cart-plus="${product.id}" aria-label="Sumar ${product.name}">+</button>
-              <button type="button" class="remove-line" data-cart-remove="${product.id}">Eliminar</button>
-            </div>
-          </div>
-          <strong>${money(product.price * quantity)}</strong>
-        </div>`,
-    )
-    .join("");
+  cartItems.innerHTML = entries.map(({ product, quantity }) => `
+    <div class="cart-line">
+      <div>
+        <div class="cart-line-title">${product.name}</div>
+        <div class="cart-line-meta">${money(product.price)} × ${quantity}</div>
+        <div class="cart-line-actions">
+          <button type="button" data-cart-minus="${product.id}" aria-label="Restar ${product.name}">−</button>
+          <strong>${quantity}</strong>
+          <button type="button" data-cart-plus="${product.id}" aria-label="Sumar ${product.name}">+</button>
+          <button type="button" class="remove-line" data-cart-remove="${product.id}">Eliminar</button>
+        </div>
+      </div>
+      <strong>${money(product.price * quantity)}</strong>
+    </div>`).join("");
 }
 
 function openCart() {
@@ -271,9 +362,7 @@ function closeCart() {
   cartDrawer.classList.remove("open");
   cartDrawer.setAttribute("aria-hidden", "true");
   document.body.classList.remove("cart-open");
-  setTimeout(() => {
-    cartOverlay.hidden = true;
-  }, 320);
+  setTimeout(() => { cartOverlay.hidden = true; }, 320);
 }
 
 function sendOrder() {
@@ -287,7 +376,6 @@ function sendOrder() {
     formError.textContent = "Agrega al menos un producto antes de enviar el pedido.";
     return;
   }
-
   if (!name || !address) {
     formError.textContent = "Completa tu nombre y distrito/dirección.";
     (!name ? form.elements.name : form.elements.address).focus();
@@ -295,14 +383,8 @@ function sendOrder() {
   }
 
   formError.textContent = "";
-  const total = entries.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-  const lines = entries.map(
-    ({ product, quantity }) =>
-      `• ${quantity}× ${product.name} — ${money(product.price * quantity)}`,
-  );
+  const total = entries.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const lines = entries.map(({ product, quantity }) => `• ${quantity}× ${product.name} — ${money(product.price * quantity)}`);
   const message = [
     "Hola Abdelito 👋 Quiero confirmar este pedido:",
     "",
@@ -317,65 +399,25 @@ function sendOrder() {
     "",
     "¿Me confirman disponibilidad, costo de delivery y tiempo de entrega?",
   ].join("\n");
-
-  window.open(
-    `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`,
-    "_blank",
-    "noopener",
-  );
-}
-
-function applyBrandMedia() {
-  document.querySelectorAll(".brand").forEach((brand) => {
-    brand.classList.add("brand-with-logo");
-    brand.innerHTML =
-      '<img class="brand-logo" src="./assets/logo-header.svg" alt="Abdelito Cocina Cubana">';
-  });
-
-  const heroDish = document.querySelector(".hero-dish");
-  if (heroDish) {
-    heroDish.classList.add("has-photo");
-    heroDish.innerHTML =
-      '<img src="./assets/pollo-rostizado.webp" alt="Pollo Rostizado" fetchpriority="high" decoding="async">';
-  }
-
-  const heroLabel = document.querySelector(".hero-card-label");
-  if (heroLabel) heroLabel.textContent = "Sazón de la casa";
-
-  const heroInfo = document.querySelector(".hero-card-info");
-  if (heroInfo) {
-    heroInfo.innerHTML = `
-      <div>
-        <strong>Pollo Rostizado</strong>
-        <small>Dorado por fuera, jugoso por dentro</small>
-      </div>
-      <b>S/ 25</b>`;
-  }
-
-  const aboutVisual = document.querySelector(".about-visual");
-  if (aboutVisual) aboutVisual.classList.add("photo-about");
+  window.open(`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
 }
 
 function handleClick(event) {
   const target = event.target.closest("button, a");
   if (!target) return;
-
   if (target.matches("[data-open-cart]")) openCart();
   if (target.matches("[data-close-cart]")) closeCart();
   if (target.matches("[data-quick-add]")) addToCart(target.dataset.quickAdd, 1);
-
   if (target.matches("[data-card-minus]")) {
     const id = target.dataset.cardMinus;
     cardQuantities[id] = Math.max(1, (cardQuantities[id] || 1) - 1);
     document.querySelector(`[data-card-qty="${id}"]`).textContent = cardQuantities[id];
   }
-
   if (target.matches("[data-card-plus]")) {
     const id = target.dataset.cardPlus;
     cardQuantities[id] = Math.min(20, (cardQuantities[id] || 1) + 1);
     document.querySelector(`[data-card-qty="${id}"]`).textContent = cardQuantities[id];
   }
-
   if (target.matches("[data-add-product]")) {
     const id = target.dataset.addProduct;
     addToCart(id, cardQuantities[id] || 1);
@@ -383,36 +425,72 @@ function handleClick(event) {
     const output = document.querySelector(`[data-card-qty="${id}"]`);
     if (output) output.textContent = "1";
   }
-
-  if (target.matches("[data-cart-minus]")) {
-    updateCartItem(target.dataset.cartMinus, -1);
-  }
-  if (target.matches("[data-cart-plus]")) {
-    updateCartItem(target.dataset.cartPlus, 1);
-  }
-  if (target.matches("[data-cart-remove]")) {
-    removeCartItem(target.dataset.cartRemove);
-  }
+  if (target.matches("[data-cart-minus]")) updateCartItem(target.dataset.cartMinus, -1);
+  if (target.matches("[data-cart-plus]")) updateCartItem(target.dataset.cartPlus, 1);
+  if (target.matches("[data-cart-remove]")) removeCartItem(target.dataset.cartRemove);
   if (target.matches("[data-send-order]")) sendOrder();
-
   if (target.matches(".filter")) {
-    document.querySelectorAll(".filter").forEach((button) => {
-      button.classList.remove("active");
-    });
+    document.querySelectorAll(".filter").forEach((button) => button.classList.remove("active"));
     target.classList.add("active");
     renderMenu(target.dataset.filter);
   }
-
   if (target.matches(".menu-toggle")) {
     const nav = document.querySelector("#main-nav");
     const open = !nav.classList.contains("open");
     nav.classList.toggle("open", open);
     target.setAttribute("aria-expanded", String(open));
   }
-
   if (target.matches(".main-nav a")) {
     document.querySelector("#main-nav").classList.remove("open");
     document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+  }
+}
+
+function installPhotoStyles() {
+  const style = document.createElement("style");
+  style.textContent = `
+    .favorite-art.has-photo::before,.favorite-art.has-photo::after,
+    .dish-art.has-photo::before,.dish-art.has-photo::after,
+    .hero-dish.has-photo::before,.hero-dish.has-photo::after{display:none}
+    .dish-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+    .favorite-art .dish-photo,.dish-art .dish-photo{transition:transform .45s ease}
+    .favorite-card:hover .dish-photo,.product-card:hover .dish-photo{transform:scale(1.035)}
+    .category-chip{z-index:2}
+  `;
+  document.head.appendChild(style);
+}
+
+function applyBrandMedia() {
+  document.querySelectorAll(".brand").forEach((brand) => {
+    brand.classList.add("brand-with-logo");
+    brand.innerHTML = '<img class="brand-logo" src="./assets/logo-header.svg" alt="Abdelito Cocina Cubana">';
+  });
+
+  const heroDish = document.querySelector(".hero-dish");
+  const heroProduct = productById("arroz-imperial-personal");
+  if (heroDish) {
+    heroDish.classList.add("has-photo");
+    heroDish.innerHTML = photo(heroProduct, "hero-photo", true);
+  }
+
+  const heroLabel = document.querySelector(".hero-card-label");
+  if (heroLabel) heroLabel.textContent = "Favorito de la casa";
+
+  const heroInfo = document.querySelector(".hero-card-info");
+  if (heroInfo) {
+    heroInfo.innerHTML = `
+      <div>
+        <strong>Arroz Imperial</strong>
+        <small>Capas de puro sabor cubano</small>
+      </div>
+      <b>S/ 25</b>`;
+  }
+
+  const aboutVisual = document.querySelector(".about-visual");
+  if (aboutVisual) {
+    aboutVisual.classList.add("photo-about");
+    aboutVisual.style.backgroundImage =
+      'linear-gradient(180deg, rgba(10,10,12,.16), rgba(10,10,12,.86)), url("./assets/dishes/ropa-vieja.webp")';
   }
 }
 
@@ -422,18 +500,16 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && cartDrawer.classList.contains("open")) closeCart();
 });
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 },
-);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
 
+installPhotoStyles();
 applyBrandMedia();
 renderFavorites();
 renderMenu();
