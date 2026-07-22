@@ -1,22 +1,52 @@
-.brand-with-logo {
-  min-width: 0;
-  width: 112px;
-  height: 112px;
-  flex: 0 0 112px;
+.site-header .brand-with-logo {
+  min-width: max-content;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 4px;
-  overflow: hidden;
-  background: #000;
+  gap: 10px;
+  padding: 4px 0;
+  background: transparent;
 }
 
-.brand-with-logo .brand-logo {
+.brand-chef {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  color: #fff;
+}
+
+.brand-chef svg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.36));
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-wordmark {
+  display: grid;
+  gap: 1px;
+  line-height: 1;
+}
+
+.brand-wordmark strong {
+  color: var(--orange);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.72rem;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+
+.brand-wordmark small {
+  color: #fff;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .footer-brand.brand-with-logo {
@@ -32,12 +62,24 @@
 }
 
 .nav-wrap {
-  min-height: 116px;
+  min-height: 72px;
 }
 
-.site-header,
 .site-footer {
   background: #000;
+}
+
+.site-header {
+  background: rgba(11, 11, 13, 0.94);
+}
+
+#menu,
+#combos,
+#como-pedir,
+#confianza,
+#faq,
+#nosotros {
+  scroll-margin-top: 88px;
 }
 
 .svg-sprite {
@@ -232,23 +274,29 @@
 }
 
 @media (max-width: 960px) {
-  .brand-with-logo {
-    width: 100px;
-    height: 100px;
-    flex-basis: 100px;
-  }
-
   .main-nav {
-    top: 106px;
+    top: 72px;
   }
 }
 
 @media (max-width: 680px) {
-  .brand-with-logo {
-    width: 90px;
-    height: 90px;
-    flex-basis: 90px;
-    padding: 3px;
+  .site-header .brand-with-logo {
+    gap: 7px;
+  }
+
+  .brand-chef {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .brand-wordmark strong {
+    font-size: 1.38rem;
+  }
+
+  .brand-wordmark small {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
   }
 
   .footer-brand.brand-with-logo {
@@ -257,11 +305,20 @@
   }
 
   .nav-wrap {
-    min-height: 96px;
+    min-height: 64px;
   }
 
   .main-nav {
-    top: 96px;
+    top: 64px;
+  }
+
+  #menu,
+  #combos,
+  #como-pedir,
+  #confianza,
+  #faq,
+  #nosotros {
+    scroll-margin-top: 74px;
   }
 
   .favorite-art {

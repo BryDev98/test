@@ -5,6 +5,7 @@
   const availability = { ...(config.availability || {}), ...(localOps.availability || {}) };
   const analyticsConfig = config.analytics || {};
   const paymentConfig = config.payments || {};
+  let confirmationReturnFocus = null;
 
   const bundles = [
     {
@@ -104,9 +105,9 @@
             <div>
               <span class="price">${money(product.price)}</span>
               <div class="qty-control" aria-label="Cantidad de ${safeText(product.name)}">
-                <button type="button" data-card-minus="${product.id}" aria-label="Restar uno" ${unavailable ? "disabled" : ""}>−</button>
-                <output data-card-qty="${product.id}">${qty}</output>
-                <button type="button" data-card-plus="${product.id}" aria-label="Sumar uno" ${unavailable ? "disabled" : ""}>+</button>
+                <button type="button" data-card-minus="${product.id}" aria-label="Restar una unidad de ${safeText(product.name)}" ${unavailable ? "disabled" : ""}>−</button>
+                <output data-card-qty="${product.id}" aria-live="polite">${qty}</output>
+                <button type="button" data-card-plus="${product.id}" aria-label="Sumar una unidad de ${safeText(product.name)}" ${unavailable ? "disabled" : ""}>+</button>
               </div>
             </div>
             <button class="add-product" type="button" data-add-product="${product.id}" ${unavailable ? "disabled" : ""}>${action}</button>
@@ -260,12 +261,23 @@
   function openConfirmation(code, whatsappUrl, paymentLabel) {
     const modal = document.querySelector("[data-order-confirmation]");
     if (!modal) return;
+    confirmationReturnFocus = document.activeElement;
     modal.querySelector("[data-order-code]").textContent = code;
     modal.querySelector("[data-confirmation-payment]").textContent = paymentLabel;
     const receipt = modal.querySelector("[data-send-receipt]");
     receipt.href = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(`Hola Abdelito, envío el comprobante del pedido ${code}.`)}`;
     receipt.dataset.orderUrl = whatsappUrl;
     modal.hidden = false;
+    window.setTimeout(() => receipt.focus(), 30);
+  }
+
+  function closeConfirmation() {
+    const modal = document.querySelector("[data-order-confirmation]");
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    if (confirmationReturnFocus && document.contains(confirmationReturnFocus)) {
+      confirmationReturnFocus.focus();
+    }
   }
 
   sendOrder = function enhancedSendOrder() {
@@ -419,7 +431,7 @@
       localStorage.setItem("abdelito-consent", "declined");
       document.querySelector("[data-consent]").hidden = true;
     }
-    if (target.matches("[data-confirmation-close]")) document.querySelector("[data-order-confirmation]").hidden = true;
+    if (target.matches("[data-confirmation-close]")) closeConfirmation();
     if (target.matches("[data-send-receipt]")) track("receipt_chat_opened", { order_id: document.querySelector("[data-order-code]")?.textContent });
     if (target.matches(".filter")) track("filter_menu", { filter: target.dataset.filter });
     if (target.matches("[data-open-cart]")) track("begin_checkout", { items: cartEntries().length });
@@ -431,6 +443,33 @@
   });
   menuSearch?.addEventListener("search", () => track("search", { search_term: menuSearch.value }));
   menuSearch?.addEventListener("change", () => { if (menuSearch.value) track("search", { search_term: menuSearch.value }); });
+
+  document.querySelector("[data-order-confirmation]")?.addEventListener("click", (event) => {
+    if (event.target.matches("[data-order-confirmation]")) closeConfirmation();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const modal = document.querySelector("[data-order-confirmation]");
+    if (!modal || modal.hidden) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeConfirmation();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [...modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
   renderService();
   renderPayments();

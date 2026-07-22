@@ -40,7 +40,7 @@ const products = [
     category: "Entrantes",
     price: 15,
     description: "Masa de maíz bien sazonada, rellena de cerdo criollo y envuelta al estilo tradicional.",
-    image: `${DISH_PATH}tamal-criollo.webp?v=20260721-6`,
+    image: `${DISH_PATH}tamal-criollo-v2.webp?v=20260721-7`,
     icon: "🫔",
     favorite: false,
     available: true,
@@ -224,6 +224,7 @@ const cardQuantities = {};
 let currentFilter = "all";
 let currentSearch = "";
 let lastFocusedElement = null;
+let cartCloseTimer = null;
 
 function readStorage(key, fallback) {
   try {
@@ -282,8 +283,8 @@ function productById(id) {
   return products.find((product) => product.id === id);
 }
 
-function photo(product, className, eager = false) {
-  return `<img class="dish-photo ${className}" src="${product.image}" alt="${product.name}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" onerror="this.parentElement.classList.remove('has-photo');this.remove()">`;
+function photo(product, className, eager = false, alt = "") {
+  return `<img class="dish-photo ${className}" src="${product.image}" alt="${alt}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" onerror="this.parentElement.classList.remove('has-photo');this.remove()">`;
 }
 
 function favoriteCard(product) {
@@ -414,22 +415,24 @@ function renderCart() {
 }
 
 function openCart() {
+  window.clearTimeout(cartCloseTimer);
   lastFocusedElement = document.activeElement;
   cartOverlay.hidden = false;
+  cartDrawer.hidden = false;
   cartDrawer.inert = false;
+  void cartDrawer.offsetWidth;
   cartDrawer.classList.add("open");
-  cartDrawer.setAttribute("aria-hidden", "false");
   document.body.classList.add("cart-open");
   setTimeout(() => cartDrawer.querySelector("[data-close-cart]").focus(), 50);
 }
 
 function closeCart() {
   cartDrawer.classList.remove("open");
-  cartDrawer.setAttribute("aria-hidden", "true");
   cartDrawer.inert = true;
   document.body.classList.remove("cart-open");
-  setTimeout(() => {
+  cartCloseTimer = window.setTimeout(() => {
     cartOverlay.hidden = true;
+    cartDrawer.hidden = true;
     if (lastFocusedElement && document.contains(lastFocusedElement)) lastFocusedElement.focus();
   }, 320);
 }
@@ -590,7 +593,7 @@ function applyBrandMedia() {
   const heroProduct = productById("arroz-imperial-personal");
   if (heroDish) {
     heroDish.classList.add("has-photo");
-    heroDish.innerHTML = photo(heroProduct, "hero-photo", true);
+    heroDish.innerHTML = photo(heroProduct, "hero-photo", true, "Arroz Imperial de Abdelito");
   }
 
   const heroLabel = document.querySelector(".hero-card-label");
@@ -625,8 +628,21 @@ form.addEventListener("input", () => {
   saveCustomerDetails();
 });
 form.addEventListener("change", saveCustomerDetails);
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendOrder();
+});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && cartDrawer.classList.contains("open")) closeCart();
+  if (event.key === "Escape") {
+    const nav = document.querySelector("#main-nav");
+    const toggle = document.querySelector(".menu-toggle");
+    if (nav?.classList.contains("open")) {
+      nav.classList.remove("open");
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.focus();
+    }
+  }
   if (event.key === "Tab" && cartDrawer.classList.contains("open")) {
     const focusable = [...cartDrawer.querySelectorAll('button:not([hidden]), input, select, textarea, [href], [tabindex]:not([tabindex="-1"])')]
       .filter((element) => !element.disabled && element.offsetParent !== null);
