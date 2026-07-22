@@ -14,7 +14,7 @@ const DISH_PATH = "./assets/dishes/";
 const products = [
   {
     id: "croquetas-jamon",
-    name: "Croquetas de Jamón de la Abuela",
+    name: "Croquetas de Jamón",
     category: "Entrantes",
     price: 12.9,
     description: "Seis croquetas caseras de jamón, crujientes por fuera y cremosas por dentro.",
@@ -24,8 +24,8 @@ const products = [
     available: true,
   },
   {
-    id: "ensalada-tropical",
-    name: "Ensalada Tropical de la Casa",
+    id: "ensalada-fría",
+    name: "Ensalada Fría de la Casa",
     category: "Entrantes",
     price: 10,
     description: "Ensalada fría cubana con pasta, jamón, piña, huevo, mayonesa y el sazón especial de la casa.",
@@ -101,8 +101,8 @@ const products = [
     available: true,
   },
   {
-    id: "bistec-malecon",
-    name: "Bistec Encebollado del Malecón",
+    id: "bistec-encebollado",
+    name: "Bistec Encebollado",
     category: "Platos fuertes",
     price: 27,
     description: "Bistec jugoso con cebolla salteada, arroz congrí, ensalada y yuca con mojo criollo.",
@@ -112,8 +112,8 @@ const products = [
     available: true,
   },
   {
-    id: "pollo-guajiro",
-    name: "Pollo Rostizado del Guajiro",
+    id: "pollo-rostizado",
+    name: "Pollo Rostizado",
     category: "Platos fuertes",
     price: 25,
     description: "Pollo dorado y adobado con sazón de la casa, arroz congrí, ensalada y yuca con mojo.",
@@ -124,7 +124,7 @@ const products = [
   },
   {
     id: "cerdo-cazuela",
-    name: "Asado de Cerdo en Cazuela del Fogón",
+    name: "Asado de Cerdo en Cazuela",
     category: "Platos fuertes",
     price: 27,
     description: "Cerdo cocinado lentamente en cazuela con sazón cubana, arroz congrí, ensalada y yuca.",
