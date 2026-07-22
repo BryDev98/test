@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="./ux.css?v=20260721-7">
   <link rel="stylesheet" href="./growth.css?v=20260721-7">
   <link rel="stylesheet" href="./media.css?v=20260721-7">
+  <link rel="stylesheet" href="./experience.css?v=20260722-2">
   <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 </head>
 <body>
@@ -78,12 +79,17 @@
       </div>
     </section>
 
-    <section class="ticker" aria-label="Información de servicio"><div class="ticker-track"><span>Yape</span><i>✦</i><span>Plin</span><i>✦</i><span>Transferencia</span><i>✦</i><span>Delivery según zona</span><i>✦</i><span>Sazón cubana</span><i>✦</i><span>Yape</span><i>✦</i><span>Plin</span><i>✦</i><span>Transferencia</span><i>✦</i><span>Delivery según zona</span><i>✦</i><span>Sazón cubana</span><i>✦</i></div></section>
-
     <section class="section favorites">
       <div class="container">
         <div class="section-heading reveal"><div><p class="eyebrow">Recomendados</p><h2>Favoritos de la casa</h2></div><p>Empieza por aquí cuando quieras ir a tiro fijo. Sabor, porción y antojo: KPI cumplido.</p></div>
         <div class="favorite-grid" id="favorites-list"></div>
+      </div>
+    </section>
+
+    <section class="returning-customer" data-order-history hidden aria-labelledby="recent-order-title">
+      <div class="container recent-order-card">
+        <div><p class="eyebrow">Tu pedido reciente</p><h2 id="recent-order-title">¿Repetimos la jugada?</h2><p data-recent-order-summary></p></div>
+        <button class="button button-primary" type="button" data-repeat-order>Repetir pedido</button>
       </div>
     </section>
 
@@ -103,8 +109,19 @@
 
     <section class="section section-soft" id="combos">
       <div class="container">
-        <div class="section-heading reveal"><div><p class="eyebrow">Resuelve la mesa</p><h2>Combos listos para agregar</h2></div><p>Selecciones armadas con los precios vigentes de la carta. Sin descuentos fantasma ni letras microscópicas.</p></div>
+        <div class="section-heading reveal"><div><p class="eyebrow">Resuelve la mesa</p><h2>Combos con ahorro real</h2></div><p>Precio regular, precio combo y ahorro visible. Aquí el descuento sí aparece en la cuenta; no es decoración corporativa.</p></div>
         <div class="combo-grid" data-combo-grid></div>
+      </div>
+    </section>
+
+    <section class="section delivery-planner" id="delivery">
+      <div class="container delivery-planner-grid">
+        <div><p class="eyebrow">Antes de pedir</p><h2>Calcula tu delivery</h2><p>Selecciona tu distrito para conocer una tarifa y tiempo referenciales antes de abrir WhatsApp.</p></div>
+        <div class="delivery-quote-card">
+          <label for="delivery-preview-district">Distrito de entrega</label>
+          <select id="delivery-preview-district" data-delivery-preview><option value="">Selecciona tu distrito</option></select>
+          <div class="delivery-quote-result" data-delivery-preview-result aria-live="polite"><span>Delivery estimado</span><strong>Selecciona una zona</strong><small>El monto final se confirma al validar la dirección.</small></div>
+        </div>
       </div>
     </section>
 
@@ -113,10 +130,6 @@
         <div class="section-heading reveal"><div><p class="eyebrow">Simple y directo</p><h2>Cómo pedir</h2></div><p>Sin registros, sin claves y sin convertir el almuerzo en un trámite bancario.</p></div>
         <div class="process-grid"><article class="process-card reveal"><span>01</span><h3>Elige</h3><p>Agrega platos, cantidades o un combo completo.</p></article><article class="process-card reveal"><span>02</span><h3>Confirma</h3><p>Indica entrega, horario y método de pago preferido.</p></article><article class="process-card reveal"><span>03</span><h3>Coordina</h3><p>Recibe confirmación y envía el comprobante por WhatsApp.</p></article></div>
       </div>
-    </section>
-
-    <section class="section info-band">
-      <div class="container info-grid"><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-location"></use></svg></span><div><strong>Delivery en Lima</strong><p>El costo se confirma según la zona.</p></div></article><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-card"></use></svg></span><div><strong>Pagos directos</strong><p>Yape, Plin o transferencia bancaria.</p></div></article><article><span class="icon-tile" aria-hidden="true"><svg class="ui-icon"><use href="#icon-chat"></use></svg></span><div><strong>Atención real</strong><p>Coordinación directa por WhatsApp.</p></div></article></div>
     </section>
 
     <section class="section" id="confianza">
@@ -154,7 +167,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid"><div><a class="brand footer-brand brand-with-logo" href="#inicio"><img class="brand-logo" src="./assets/logo-header-complete.webp" width="640" height="640" alt="Abdelito Cocina Cubana · Sabores que te transportan a Cuba"></a><p>Sabor cubano casero en Lima, preparado para compartir.</p></div><div><strong>Pedido principal</strong><a href="https://wa.me/51973604660" target="_blank" rel="noopener">+51&nbsp;973&nbsp;604&nbsp;660</a></div><div><strong>Contactos alternativos</strong><a href="tel:+51904681073">+51&nbsp;904&nbsp;681&nbsp;073</a><a href="tel:+51904499915">+51&nbsp;904&nbsp;499&nbsp;915</a><a href="tel:+51997583788">+51&nbsp;997&nbsp;583&nbsp;788</a></div><div><strong>Síguenos</strong><span>Instagram · Próximamente</span><span>TikTok · Próximamente</span></div></div>
+    <div class="container footer-grid footer-grid-simple"><div><a class="brand footer-brand brand-with-logo" href="#inicio"><img class="brand-logo" src="./assets/logo-header-complete.webp" width="640" height="640" alt="Abdelito Cocina Cubana · Sabores que te transportan a Cuba"></a><p>Sabor cubano casero en Lima, preparado para compartir.</p></div><div><strong>Pedidos y atención</strong><a href="https://wa.me/51973604660" target="_blank" rel="noopener">+51&nbsp;973&nbsp;604&nbsp;660</a><span>Confirmación directa por WhatsApp</span></div><div><strong>Compra con claridad</strong><a href="#delivery">Calcular delivery</a><a href="#faq">Preguntas frecuentes</a><a href="#menu">Ver la carta</a></div></div>
     <div class="container footer-bottom"><span>© <span id="year"></span> Abdelito Cocina Cubana</span><span>Hecho con sazón y estrategia.</span></div>
   </footer>
 
@@ -171,26 +184,46 @@
       <form class="checkout-form" data-checkout-form novalidate>
         <div class="form-field"><label for="customer-name">Nombre *</label><input id="customer-name" name="name" type="text" autocomplete="name" placeholder="¿Cómo te llamas?" required></div>
         <div class="form-field"><label for="customer-method">Modalidad *</label><select id="customer-method" name="method"><option>Delivery</option><option>Recojo</option></select></div>
-        <div class="form-field"><label for="customer-address">Distrito y dirección</label><input id="customer-address" name="address" type="text" autocomplete="address-line1" placeholder="Ej. Pueblo Libre, Jr. ..."><small class="field-help">Obligatorio para delivery. El costo se confirma según zona.</small></div>
+        <div class="delivery-fields" data-delivery-fields>
+          <div class="form-field"><label for="customer-district">Distrito *</label><select id="customer-district" name="district"><option value="">Selecciona tu distrito</option></select><small class="field-help" data-district-help>Te mostraremos el costo estimado antes de enviar.</small></div>
+          <div class="form-field"><label for="customer-address">Dirección y referencia *</label><input id="customer-address" name="address" type="text" autocomplete="street-address" placeholder="Jirón, número y referencia"><small class="field-help">El costo final se valida con la dirección exacta.</small></div>
+        </div>
         <div class="form-field"><label for="customer-schedule">Horario preferido</label><select id="customer-schedule" name="schedule"><option>Lo antes posible</option><option>Almuerzo · 12:00 a 3:00 p. m.</option><option>Tarde · 3:00 a 6:00 p. m.</option><option>Cena · 6:00 a 9:00 p. m.</option><option>Coordinar por WhatsApp</option></select><small class="field-help">Es una preferencia; la hora se confirma por WhatsApp.</small></div>
+        <div class="checkout-live-summary" data-checkout-live-summary aria-live="polite"><span>Productos</span><strong data-live-products>S/ 0</strong><span>Ahorro combo</span><strong data-live-discount>—</strong><span>Delivery estimado</span><strong data-live-delivery>Por seleccionar</strong><span class="checkout-live-total">Total estimado</span><strong class="checkout-live-total" data-live-total>S/ 0</strong></div>
         <fieldset class="form-field"><legend>Método de pago preferido</legend><div class="payment-options" data-payment-options></div><p class="payment-note">Los datos de pago y el total final se confirman por WhatsApp antes de enviar el comprobante.</p></fieldset>
         <div class="form-field"><label for="customer-notes">Observaciones</label><textarea id="customer-notes" name="notes" rows="3" placeholder="Sin cebolla, horario, referencia, etc."></textarea></div>
         <p class="form-error" data-form-error role="alert" aria-live="assertive"></p>
         <button class="sr-only" type="submit">Confirmar pedido por WhatsApp</button>
       </form>
     </div>
-    <div class="cart-footer"><div class="summary-row"><span>Subtotal</span><strong data-subtotal>S/ 0</strong></div><div class="summary-row muted"><span>Delivery</span><span>Se confirma según zona</span></div><button class="button button-primary button-full" type="button" data-send-order><svg class="ui-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>Confirmar por WhatsApp</button><small>Se abrirá WhatsApp con tu pedido, modalidad y pago preferido.</small></div>
+    <div class="cart-footer"><div class="summary-row"><span>Productos</span><strong data-subtotal>S/ 0</strong></div><div class="summary-row savings-row" data-savings-row hidden><span>Ahorro por combos</span><strong data-savings-total>− S/ 0</strong></div><div class="summary-row muted"><span>Delivery estimado</span><span data-delivery-total>Selecciona distrito</span></div><div class="summary-row grand-total-row"><span>Total estimado</span><strong data-grand-total>S/ 0</strong></div><button class="button button-primary button-full" type="button" data-send-order><svg class="ui-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span data-send-order-label>Confirmar por WhatsApp</span></button><small>El total final y la disponibilidad se confirman antes del pago.</small></div>
   </aside>
+
+  <div class="product-detail-modal" data-product-detail hidden>
+    <div class="product-detail-card" role="dialog" aria-modal="true" aria-labelledby="product-detail-title">
+      <button class="product-detail-close" type="button" data-close-product aria-label="Cerrar detalles">×</button>
+      <div class="product-detail-media"><img data-product-detail-image src="" alt=""><span>Imagen referencial</span></div>
+      <div class="product-detail-content">
+        <p class="eyebrow" data-product-detail-category></p><h2 id="product-detail-title" data-product-detail-title></h2><p class="product-detail-description" data-product-detail-description></p>
+        <div class="product-facts"><div><small>Presentación</small><strong data-product-detail-portion></strong></div><div><small>Rinde para</small><strong data-product-detail-serves></strong></div><div><small>Preparación</small><strong data-product-detail-prep></strong></div></div>
+        <div class="product-detail-columns"><div><h3>Qué incluye</h3><ul data-product-detail-includes></ul></div><div><h3>Alérgenos declarados</h3><div class="allergen-list" data-product-detail-allergens></div></div></div>
+        <p class="cross-contact-note">Si tienes una alergia severa, consúltala por WhatsApp antes de pedir. La cocina puede manejar otros alérgenos y existir contacto cruzado.</p>
+        <label class="product-note-label" for="product-note">Personaliza este plato</label><textarea id="product-note" rows="2" data-product-note placeholder="Ej. sin cebolla, cambiar guarnición…"></textarea><small data-product-detail-options></small>
+        <div class="product-detail-actions"><strong data-product-detail-price></strong><button class="button button-primary" type="button" data-detail-add>Agregar al pedido</button></div>
+      </div>
+    </div>
+  </div>
 
   <div class="order-confirmation" data-order-confirmation hidden>
     <div class="order-confirmation-card" role="dialog" aria-modal="true" aria-labelledby="confirmation-title" aria-describedby="confirmation-description"><p class="eyebrow">Pedido preparado</p><h2 id="confirmation-title">Tu resumen ya está en WhatsApp</h2><p id="confirmation-description">Conserva este código para identificar el pedido: <strong class="order-code" data-order-code>AC-000000</strong></p><p>Pago preferido: <strong data-confirmation-payment>Yape</strong>. Espera la confirmación del total y luego adjunta el comprobante en el chat.</p><div class="confirmation-actions"><a class="button button-primary" data-send-receipt href="#" target="_blank" rel="noopener">Abrir chat para enviar comprobante</a><button class="confirmation-close" type="button" data-confirmation-close>Seguir viendo la carta</button></div></div>
   </div>
 
-  <div class="consent-banner" data-consent hidden><p>Usamos medición opcional para saber qué platos interesan y mejorar la carta. La web funciona igual si la rechazas.</p><div class="consent-actions"><button class="consent-decline" type="button" data-consent-decline>Solo lo necesario</button><button class="consent-accept" type="button" data-consent-accept>Aceptar medición</button></div></div>
+  <div class="consent-banner" data-consent hidden><p>Medición opcional para mejorar la carta. Puedes rechazarla y la web funciona igual.</p><div class="consent-actions"><button class="consent-decline" type="button" data-consent-decline>Solo lo necesario</button><button class="consent-accept" type="button" data-consent-accept>Aceptar</button></div></div>
   <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-  <script src="./business-config.js"></script>
+  <script src="./business-config.js?v=20260722-2"></script>
   <script src="./app.js?v=20260722-1"></script>
-  <script src="./growth.js?v=20260721-7"></script>
+  <script src="./growth.js?v=20260722-2"></script>
+  <script src="./experience.js?v=20260722-2"></script>
 </body>
 </html>

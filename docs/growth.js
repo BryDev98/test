@@ -38,7 +38,7 @@
       description: "Una entrada cubana, un plato fuerte y un dulce casero en una sola jugada.",
       items: [
         ["tamal-criollo", 1],
-        ["pollo-guajiro", 1],
+        ["pollo-rostizado", 1],
         ["torrija-cubana", 1],
       ],
     },
